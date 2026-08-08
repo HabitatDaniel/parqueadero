@@ -1,0 +1,102 @@
+  .contenedor {
+    display: flex; /* Alinea los elementos hijos */
+    gap: 0px; /* Espacio entre los div */
+	height: 100%;
+  }
+  .caja-pequena {
+    width: 15%; /* Tamaño 1 */
+	height: 100%;
+    background-color: lightblue;
+   /*  padding: 10px;*/
+  }
+  .caja-grande {
+    width: 85%; /* Tamaño 2 */
+	height: 100%;
+    background-color: lightgreen;
+    /* padding: 100%;*/
+  }
+    .contenedorCentral {
+    display: flex; /* Alinea los elementos hijos */
+    gap: 0px; /* Espacio entre los div */
+  }
+  .caja-pequenaCentral {
+    width: 20%; /* Tamaño 1 */
+	    height: 70%;
+    background-color: lightblue;
+  }
+  .caja-grandeCentral {
+    width: 80%; /* Tamaño 2 */
+	    height: 70%;
+    background-color: lightgreen;
+      }
+  
+  
+  
+  
+  /*
+  ****
+  estilo botones menu
+  ****
+  */
+   .btn-solido {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+
+  .btn-solido:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+  }
+  
+    .btn-outline {
+    background-color: transparent;
+    color: #28a745; /* Color verde */
+    padding: 10px 20px;
+    border: 2px solid #28a745; /* Borde visible */
+    border-radius: 20px; /* Muy redondeado */
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: #28a745;
+    color: white; /* Fondo verde y letras blancas al pasar el ratón */
+  }
+  
+  .btn-outlineItem {
+    background-color: transparent;
+    color: #28a745; /* Color verde */
+    padding: 10px 20px;
+    border: 2px solid #28a745; /* Borde visible */
+   /* border-radius: 20px;  Muy redondeado */
+    cursor: pointer;
+	weight: 100%;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outlineItem:hover {
+    background-color: #28a745;
+    color: white; /* Fondo verde y letras blancas al pasar el ratón */
+  }
+  menu,
+ul {
+  display: absolute;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+li {
+  flex-grow: 1;
+}
+
+button {
+  width: 100%;
+}

@@ -1,26 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Archivos a XAMPP</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; color: #333; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 40px; max-width: 500px; }
-        h2 { color: #007bff; margin-top: 0; }
-        input[type="file"] { margin: 15px 0; display: block; }
-        button { background-color: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background-color: #0056b3; }
-    </style>
+<?php 
+// 1. Cargamos la URL desde tu archivo .txt
+$url_base = trim(file_get_contents("enlace.txt")); 
+?>
+<html lang="en" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Subir Archivo al Servidor</h2>
-        <p>El archivo se guardará en esta misma carpeta.</p>
-        <form action="subir.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="archivo_usuario" required>
-            <button type="submit" name="enviar">Cargar Archivo</button>
-        </form>
-    </div>
+	<div class="contenedor-login">
+		<img src="images/img-fondo-login.jpg" alt="Girl in a jacket" style="width:110%;height:100%;">
+		<div class="superpuesto">Texto o contenido encima
+		<!--<div style="background-color:#FFF4A3;">-->
+			<h2>London</h2>
+			<p>London is the capital city of England.</p>
+			<p>London has over 9 million inhabitants.</p>
+			
+
+			<!-- Combinar en el atributo href -->
+
+			<form action="/parqueadero/assets/php/validar.php" method="post" autocomplete="off">
+			  <input type="text" name="usuario" placeholder="Usuario" required>
+    <input type="password" name="clave" placeholder="clave" required >
+			<button type="submit">Submit Form</button>
+			<button type="reset">Reset Form</button>
+			
+</form>
+<?php
+echo "Bienvenido, " . $_SESSION['usuario'];?>
+		</div>
+		<div class="superpuestodos">
+			<img src="images/img-centro-autenticacion.jpg" alt="Girl in a jacket" class="img-Redonda">
+		</div>
+ 
+<script type="text/javascript">
+    // Al cargar la página, forzamos un nuevo estado en el historial
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        // Si el usuario presiona "Atrás", lo enviamos hacia adelante de nuevo
+        history.go(1);
+    };
+</script>
+	
+
 </body>
 </html>
