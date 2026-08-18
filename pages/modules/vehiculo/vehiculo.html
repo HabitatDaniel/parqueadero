@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Vehículo por Placa</title>
+
+    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Vehiculo.css ">
+</head>
+
+<body>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-12  contenedor ">
+
+        <h2>Buscar Información del Vehículo</h2>
+
+        <!-- El formulario envía el dato al archivo del servidor (ej. buscar.php) -->
+        <form action="../../../assets/php/Busqueda/BuscarVehiculo.php" method="GET">
+            <label for="placa">
+                Ingrese la Placa del Vehículo:
+            </label>
+            <input type="text" id="placa" class="form-control" name="placa" placeholder="Ej: ABC123" required autofocus>
+            <button type="submit" class="btn btn-secondary text-white">Gris Énfasis</button>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>

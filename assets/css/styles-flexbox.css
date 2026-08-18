@@ -1,14 +1,22 @@
 *{
     box-sizing: border-box;
+<<<<<<< HEAD
     margin: 0;
     padding: 0;
 }
 /* Clases especiales */
+=======
+    margin:0;
+    padding: 0;
+}
+/*Clases especiales*/
+>>>>>>> ec47381e3a66392d24647a0e961fd2c110469677
 .borde{
     border: 1px solid gray;
 }
 .titulo{
     width: 100%;
+<<<<<<< HEAD
     height: 50px;
 }
 /* Contenedor */
@@ -47,10 +55,56 @@ header{
 /* Portafolio */
 .portafolio{
     display: flex;
+=======
+    height:50px;
+}
+
+/*Contenedor*/
+.contenedor{
+    display:flex;
+    width: 80%;
+    flex-flow: column wrap;
+    max-width: 1280px;
+    margin:auto;
+}
+/*Navegador*/
+nav{
+    display:flex;
+    height: 50px;
+}
+
+.logo{ 
+    flex: 20%;
+    height: 100%;
+    padding:5px;
+}
+.menu{ 
+    flex: 65%;
+    height: 100%;
+    padding: 5px;
+    
+}
+.login{ 
+    flex: 15%;
+    height: 100%;
+    padding: 5px;
+    
+}
+/*header*/
+header{
+    width: 100%;
+    height: 400px;
+
+} 
+/*Portafolio*/
+.portafolio{
+    display:flex;
+>>>>>>> ec47381e3a66392d24647a0e961fd2c110469677
     width: 100%;
     height: 500px;
 }
 .port-col{
+<<<<<<< HEAD
     flex: 1;
     height: 100%;
 }
@@ -82,10 +136,49 @@ header{
     display: flex;
     flex-flow: column nowrap;
 }
+=======
+    flex:1;
+    height: 100%;
+}
+/*Nosotros*/
+.nosotros{
+    display:flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 500px; 
+}
+.nos-fila{
+    flex: 1; 
+    display:flex;
+}
+.nos-fila-col-ext{
+    display:flex;
+    flex: 40%;
+    
+}
+.nos-fila-col-cnt{
+    flex: 20%;
+    
+}
+/*Contactenos*/
+.contacto{
+    display:flex;
+    width: 100%;
+    height: 500px;   
+}
+.cont-col{
+    flex: 1;
+    display:flex;
+    flex-flow: column nowrap;
+       
+}
+
+>>>>>>> ec47381e3a66392d24647a0e961fd2c110469677
 .cont-col-fila-arr{
     width: 100%;
     flex: 70%;
 }
+<<<<<<< HEAD
 .cont-col-fila-abj{
     width: 100%;
     flex: 30%;
@@ -94,4 +187,55 @@ header{
 footer{
     width: 100%;
     height: 50px;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .contenedor{
+        width: 100%;
+    }   
+    nav{
+        flex-flow: row wrap;
+    }
+    .logo{
+        flex: 100%;
+        height: 100%;
+    }
+    .menu{
+        flex: 80%;
+        height: 100%;
+    }
+    .login{
+        flex: 20%;
+        height: 100%;
+    }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    nav{
+        flex-flow: column nowrap;
+        height: 150px;
+    }
+    .logo{
+        flex: 100%;
+        height: 50%;
+    }
+    .menu{
+        flex: 100%;
+    }
+    .login{
+        flex: 100%;
+    }
+=======
+
+.cont-col-fila-abj{
+    width: 100%;
+    flex                        : 30%; 
+}
+/*pie de pagina*/
+footer{
+    width: 100%;
+    height: 50px;
+>>>>>>> ec47381e3a66392d24647a0e961fd2c110469677
 }

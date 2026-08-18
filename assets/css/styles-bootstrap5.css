@@ -1,39 +1,401 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 /* Clases especiales */
-.titulo{
+.titulo {
     height: 50px;
+    width: 100%;
+    color: white;
+    background-color: #6ECEAD;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
 }
-.titulo .col{
+
+.titulo .col {
+    height: 20%;
+}
+
+/* Navegador */
+nav {
+    width: 100%;
+    /* position: fixed; */
+    top: 0;
+    text-align: right;
+    /* left: 10%;
+    height: 60px;
+    /* Define una altura fija */
+    z-index: 1000;
+    /* Asegura que quede por encima de otros elementos*/
+    align-items: center;
+    background-color: #009480;
+}
+
+
+.logo {
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+.logo img {
     height: 100%;
 }
+
+.menu {
+    height: 100%;
+    padding: 5px;
+}
+
+.login {
+    height: 100%;
+    padding: 5px;
+    text-align: left;
+   
+
+    /* background-color: green; */
+    /* border-radius: 20%; */
+}
+
+.login .btn{
+    width: 90%;
+    /* background-color: red; */
+    /* color: red; */
+}
+
 /* Contenedor */
-.contenedor{
+.contenedor {
     display: flex;
     flex-flow: column wrap;
-    width: 80%;
+    width: 90%;
     max-width: 1280px;
     margin: auto;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    /* Apila los elementos uno abajo del otro */
 }
-/* Navegador */
-nav{
-    height: 50px;
+
+body {
+    /* Añade un margen superior igual o mayor a la altura del nav para que no tape el contenido inicial */
+    /* padding-top: 60px; */
 }
-.logo{
-    height: 100%;
-    padding: 5px;
+
+
+section {
+    height: 390px;
 }
-.menu{
-    height: 100%;
-    padding: 5px;
-}
-.login{
-    height: 100%;
-    padding: 5px;
-}
-header{
+
+header {
     height: 400px;
+    background-image: url("../img/fondo.jpg");
+    background-size: 100% 80%;
+    background-attachment: fixed;
+}
+
+.portafolio {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    /* text-align: center; */
+    justify-content: center;
+    display: flex;
+    background-color: #F8F9FA;
+
+}
+
+.portafolio .port-col {
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    background-color: #F8F9FA;
+    display: flex;
+}
+
+.portafolio img {
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+}
+
+.dato {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #6C757D;
+    border-radius: 10px;
+}
+
+.campo {
+    padding: 2px 20px 1px 20px;
+    text-align: justify;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+}
+
+.portafolio vinculo {
+    width: 50px;
+    color: rgb(0, 0, 255);
+    background-color: #6C757D;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.nosotros {
+    height: 90%;
+    padding: 1px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.nos-fila {
+    height: 90%;
+    background-color: #F8F9FA;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column wrap;
+    flex-direction: row;
+}
+
+.nos-fila-col-ext-der {
+    height: 100%;
+    align-items: left;
+    justify-content: right;
+    text-align: right;
+    background-color: white;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.nos-fila-col-ext-izq {
+    height: 100%;
+    align-items: right;
+    justify-content: center;
+    text-align: right;
+    background-color: white;
+    text-align: left;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+
+.nos-fila-col-cnt img {
+    padding: 5px;
+    width: 100px;
+    height: 60px;
+    border-radius: 20%;
+
+}
+
+.cont-col {
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+
+.cont-col-fila-arr {
+    height: 70%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.cont-col-fila-abj {
+    height: 30%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 2px 2px 2px 2px;
+}
+
+
+
+.cont-col-fila-abj img {
+    padding: 10px;
+    width: 80px;
+    height: 40px;
+    border-radius: 40%;
+}
+
+footer {
+    height: 60px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    color: white;
+    background-color: #00947F;
+}
+
+/*TABLET*/
+@media (max-width: 992px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+    .portafolio {
+        padding-left: 20px;
+        height: 100%;
+        width: 100%;
+        flex-flow: row wrap;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* Navegador */
+    nav {
+        width: 100%;
+    }
+
+
+    .nosotros {
+        height: 600PX;
+        float: left;
+        background-color: yellow;
+
+    }
+    .nos-fila {
+        height: 200px;
+        
+    }
+    
+    .nos-fila-col-ext-der {
+        justify-content: center;
+    }
+
+    .nos-fila-col-cnt img {
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+        border-radius: 20%;
+
+    }
+}
+
+/*CELULARES*/
+@media (max-width: 767.98px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+
+    .portafolio {
+        flex-flow: row wrap;
+        width: 100%;
+        height: auto;
+    }
+    
+        .nav{
+            text-align: center;
+            display: flex;
+            width: 100%;
+            padding-left: 15%;
+            }
+    .nosotros {
+        height: 100%;
+        padding-left: 20px;
+        /* width: 100%; */
+        background-color: #F8F9FA;
+        flex-flow: row wrap;
+        display: flex;
+        width: 100%;
+        text-align: center;
+
+    }
+
+
+    .nos-fila {
+        height: 20%;
+        width: 100%;
+        background-color: #F8F9FA;
+        display: flex;
+        flex-flow: COLUMN NOwrap;
+    }
+
+    .nos-fila-col-ext-der {
+        height: 60%;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+        flex-direction: column;
+    }
+
+    .nos-fila-col-ext-izq {
+        height: 60%;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+
+
+    /* El Div 1 (Texto) toma el orden 2, moviéndose visualmente abajo */
+    .caja-1 {
+        order: 1;
+    }
+
+    /* El Div 2 (Imagen) toma el orden 1, moviéndose visualmente arriba */
+    .caja-2 {
+        order: 2;
+    }
+
+    /* El Div 3 se oculta por completo de la pantalla */
+    .caja-3 {
+        display: none;
+    }
+    
+    .nos-fila-col-cnt img {
+        padding: 5px;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+
+
+}
+
+/*EXTRA SMALL*/
+@media (max-width:575.98px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+    .portafolio {
+        flex-flow: row wrap;
+        width: 100%;
+        height: auto;
+    }
+
+    /* .nosotros {
+        flex-flow: row wrap;
+        width: 100%;
+        height: 700px;
+    } */
+
 }

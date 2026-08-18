@@ -1,0 +1,80 @@
+.contenedor {
+    width: 100%;
+    display: flex;
+}
+
+.menuizq {
+    background-color: #009480;
+    height: 700px;
+}
+
+.ItemUno {
+    height: 50px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.ItemUno img {
+    height: 80%;
+    width: 20%;
+
+}
+
+.ItemDos {
+    background-color: #6ECEAD;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.ItemDos img {
+    height: 60%;
+    width: 70%;
+    border-radius: 20%;
+}
+
+.ItemTres { 
+    background-color: beige;
+    height: 165px;
+    width: 110%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;    
+    display: flex;
+}
+
+
+.menuder {
+    background-color: white;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.menu {
+    background-color:#009480;
+    display: flex;
+    flex-flow: row wrap;
+    height: 50px;
+    align-items: center;
+}
+
+.menuContenedor {
+    height: 545px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.footer {
+    background-color: #009480;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+}
