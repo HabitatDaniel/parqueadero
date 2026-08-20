@@ -1,7 +1,7 @@
-<?php 
+//<?php 
 // 1. Cargamos la URL desde tu archivo .txt
-$url_base = trim(file_get_contents("enlace.txt")); 
-?>
+//$url_base = trim(file_get_contents("enlace.txt")); 
+//?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +44,7 @@ $url_base = trim(file_get_contents("enlace.txt"));
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
                     <form action="../../assets/php/validar.php" method="post" autocomplete="off" >
                     <label for="nombre" class="label">Usuario:</label>
-                        <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1" placeholder="Usuario" required>
+                        <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1" placeholder="Usuario" required autofocus>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-input  ">
                         <label for="email" class="label">Correo electrónico:</label>
