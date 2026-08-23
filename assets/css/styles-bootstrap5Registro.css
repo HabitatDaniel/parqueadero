@@ -2,137 +2,163 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-        /* background-color: yellow; */
 }
 
 .contenedor {
-    /* background-color: #00947F; */
     width: 100%;
-    background-color:#F4F7F6;
-    display: flex;
-    flex-direction: column;
+    background-color: #F4F7F6;
     text-align: center;
     align-items: center;
-    justify-content: center;
-    height: 800px;
+    display: flex;
+    flex-direction: column; /* Organiza todo hacia abajo */
+    min-height: 100vh; /* Permite que crezca de forma dinámica en celulares */
+    padding-bottom: 20px;
 }
 
+.logo {
+    width: 100%;
+    display: flex; /* Reactivado */
+    align-items: center;
+    justify-content: center;
+}
 
-.panelder {
-    background-color:#266E61;
+.logo .imagen {
+    width: 50%;
+    height: auto;
+}
+
+.panelsuperior {
+    background-color: #009480;
+    padding: 2rem;
+    border-radius: 20px 20px 0 0;
+    border-top: 5px solid #009480;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     color: white;
-    width: 50%;
-    height: 100%;
+    width: 90%;
+    height: auto; /* Dinámico para evitar cortes */
+    min-height: 80px;
     text-align: center;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-
 }
 
-.superiorder {
-    /* background-color: wheat; */
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: end;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.inferiorder {
-    /* background-color: yellow; */
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    align-items: center;
-    justify-content: start;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.panelizq {
-    background-color: ORANGE;
-    width: 50%;
-    height: 100%;
+.panelcentral {
+    /* background-color: #009480; */
+    width: 90%;
+    height: auto; /* Evita que la imagen se desborde */
+    padding: 15px 0;
     text-align: center;
     align-items: center;
     justify-content: center;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.superiorizq {
-    /* background-color: orange; */
-    width: 100%;
-    height: 80%;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-
+    display: flex; /* Reactivado para controlar la imagen */
 }
 
 .imagenprincipal {
-    /* style='max-width: 200px; height: auto; border: 2px solid #ccc; border-radius: 8px;' */
-    max-width: 80%;
-    height: auto;
-    /* border: 2px solid #ccc; */
+    max-width: 100%;
+    height: 400px;
+    /* height: auto; */
     border-radius: 30px;
 }
 
-.inferiorizq {
-    /* background-color: green; */
-    width: 100%;
-    height: 20%;
-    /* text-align: center;
-    align-items: center;
-    justify-content: center; */
-    display: flex;
-    flex-direction: column;
-
+.panelinferior {
+    /* background-color: red; */
+    width: 90%;
+    gap: 20px;
+    display: flex; /* Reactivado */
+    flex-direction: row; /* En PC se ven lado a lado */
+    padding: 20px 0;
 }
 
+.panelinferiorizq {
+    width: 50%;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.panelinferiorder {
+    width: 50%;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.panelinferiorboton {
+    height: 50px;
+    width: 95%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.panelhooter {
+    background-color: #009480;
+    padding: 2rem;
+    border-radius: 0 0 20px 20px;
+    border-top: 5px solid #009480;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    color: white;
+    width: 90%;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
 
 /*TABLET*/
 @media (max-width: 992px) {
-
-    .contenedor {
-        width: 100% !important;
-        display: flex;
+    .panelinferior {
+        /* background-color: orange; */
     }
-
-
 }
 
 /*CELULARES*/
 @media (max-width: 767.98px) {
-
-    .contenedor {
-        width: 100% !important;
+    .panelsuperior {
+        width: 95%;
+        height: 20px;
     }
 
+    .panelcentral {
+        width: 95%;
+    }
+
+.imagenprincipal {
+    max-width: 100%;
+    height: 100px;
+    /* height: auto; */
+    border-radius: 30px;
+}
+    .panelinferior {
+        /* background-color: orange; /*Mantiene tu lógica de color de prueba */
+        flex-direction: column; /* CRÍTICO: Los paneles se apilan uno abajo del otro en celular */
+        width: 95%;
+        height: 300px;
+    }
+    
+    .panelinferiorizq {
+        width: 100%; /* Toma todo el ancho disponible en la fila apilada */
+        border: 2px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .panelinferiorder {
+        width: 100%; /* Toma todo el ancho disponible abajo del izquierdo */
+        border: 2px solid #ccc;
+        border-radius: 20px;
+    }
+    
+    .panelhooter {
+        width: 95%;
+    }
 }
 
 /*EXTRA SMALL*/
-@media (max-width:575.98px) {
-
-    .contenedor {
-        width: 100% !important;
-    }
-
-    .portafolio {
-        flex-flow: row wrap;
-        width: 100%;
-        height: auto;
-    }
-
-
+@media (max-width: 575.98px) {
+    /* Aquí puedes añadir ajustes finos para pantallas muy pequeñas */
 }

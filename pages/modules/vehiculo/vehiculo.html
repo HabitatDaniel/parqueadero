@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Vehículo por Placa</title>
-    <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buscar Vehículo</title>
+        <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
     <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Busqueda.css ">
-    <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
 </head>
-
 <body>
-    <div class="row col-12 col-sm-12 col-md-6 col-lg-12  contenedor">
-        <div class="col-12 col-sm-2 col-md-22 col-lg-10 logo ">
 
-            <img src="../../../assets/img/portafolio-1.png" class="img-fluid border" alt="Imagen Portafolio" />
+    <!-- El formulario envuelve la estructura interna de la tarjeta -->
+    <!-- Cambia "resultado.html" por el nombre de tu página de destino -->
+    <form action="../../../assets/php/Busqueda/BuscarVehiculo.php" method="GET" class="card">
+        
+        <div class="icon-container">
+            <svg class="vehicle-icon" viewBox="0 0 24 24">
+                <path d="M19.5,9.5C20.88,9.5 22,10.62 22,12C22,13.38 20.88,14.5 19.5,14.5C18.12,14.5 17,13.38 17,12C17,10.62 18.12,9.5 19.5,9.5M4.5,9.5C5.88,9.5 7,10.62 7,12C7,13.38 5.88,14.5 4.5,14.5C3.12,14.5 2,13.38 2,12C2,10.62 3.12,9.5 4.5,9.5M19.5,8C17.29,8 15.5,9.79 15.5,12C15.5,14.21 17.29,16 19.5,16C21.71,16 23.5,14.21 23.5,12C23.5,9.79 21.71,8 19.5,8M4.5,8C2.29,8 0.5,9.79 0.5,12C0.5,14.21 2.29,16 4.5,16C6.71,16 8.5,14.21 8.5,12C8.5,9.79 6.71,8 4.5,8M12,5C10.5,5 9,6.5 9,8H15C15,6.5 13.5,5 12,5M17,8H7V10H17V8M16,11H8V13H16V11Z"/>
+            </svg>
         </div>
-        <div class="col-12 col-sm-2 col-md-22 col-lg-10 titulo">
-
-            <h2>Buscar Información del Vehículo</h2>
+        
+        <h2>Buscar Información</h2>
+        <p>Ingrese la placa del vehículo para comenzar</p>
+        
+        <div class="input-group">
+            <!-- Es obligatorio el atributo 'name' para que viaje por GET -->
+            <input type="text" 
+                   id="placa"
+                   name="placa" 
+                   class="plate-input" 
+                   placeholder="ABC123" 
+                   maxlength="7" 
+                   autocapitalize="characters" 
+                   autocorrect="off" 
+                   autocomplete="off"
+                   required>
         </div>
-        <!-- El formulario envía el dato al archivo del servidor (ej. buscar.php) -->
-        <form action="../../../assets/php/Busqueda/BuscarVehiculo.php" class="col-12 col-sm-2 col-md-22 col-lg-10" method="GET">
-            <div class="subtitulo">
-                <label for="placa">
-                    Ingrese la Placa del Vehículo:
-                </label>
-            </div>
-            <input type="text" id="placa" class="placa" name="placa" style="text-transform: uppercase;"
-                placeholder="Ej: ABC123" required autofocus autocomplete="off">
-            <div class="col-12 col-sm-2 col-md-22 col-lg-8 header">
-
-                <button type="submit" class="boton">BUSCAR</button>
-
-            </div>
-
-        </form>
-    </div>
-
+        
+        <!-- Al ser de tipo 'submit', procesará el formulario de manera nativa -->
+        <button type="submit" class="btn-search">BUSCAR</button>
+        
+    </form>
 
 </body>
-
 </html>

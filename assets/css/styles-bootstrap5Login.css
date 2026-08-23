@@ -192,19 +192,28 @@ footer {
 @media (max-width: 767.98px) {
 
     .contenedor {
-        /* width: 100% !important; */
+        width: 100% !important;
     }
 
     .form-Inicio {
         height: 600px;
         /* padding-top: 20px; */
-        /* width: 100%; */
-        flex-flow: row wrap;
+        width: 95%;
+       
+        flex-flow: row wrap ;
         flex-direction: row;
         display: flex;
         background-color: #6ECEAD;
     }
 
+    .formato{
+        /* background-color: red; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-flow: column;
+
+    }
     .form-Inicio .form-titulo {
         font-size: 30px;
         display: flex;
@@ -213,6 +222,8 @@ footer {
     .form-Inicio .form-label {
         height: 30%;
         justify-content: center;
+        /* background-color: red; */
+        width: 70%;
         align-items: center;
         flex-flow: column;
         text-align: center;
@@ -221,6 +232,7 @@ footer {
     
     .form-Inicio .form-input {
         height: 30%;
+        width: 70%;
         justify-content: center;
         align-items: center;
         flex-flow: column;
