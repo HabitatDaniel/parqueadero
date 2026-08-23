@@ -1,0 +1,124 @@
+<?php 
+ 1. Cargamos la URL desde tu archivo .txt
+$url_base = trim(file_get_contents("enlace.txt")); 
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame Cambio Clave</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/img/IconoPrincipal.png">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/styles-bootstrap5Login.css">
+</head>
+
+<body>
+    <!-- Contenedor  -->
+    <div class="contenedor container-fluid-md ">
+        <!-- ENCABEZADO -->
+        <nav class="row">
+            <div class="col-12 col-sm-12 col-md-2  col-lg-2 logo">
+                <img src="../../assets/img/logo.png" alt="Logo cargue" />
+            </div>
+        </nav>
+        <!-- DIV CENTRAL -->
+        <section id="portafolio" class="row formulario">
+            <div class="form-Inicio border">
+                <form action="../../assets/php/validar.php" method="post" class="formato" autocomplete="off">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-titulo">CAMBIAR CLAVE</div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                        <label for="nombre" class="label">Clave Nueva:</label>
+                        <input type="password" name="usuario" class="form-control" id="miPassword1"
+                            placeholder="Nueva Clave" required autofocus>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-input">
+                        <label for="email" class="label">Repita la clave:</label>
+                        <input type="password" name="clave" class="form-control" id="miPassword2"
+                            placeholder="Repita Clave" required>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
+                        <a class="text-blue  " href="menu.html">Olvido su clave?</a>
+                        <button type="button" onclick="verificarIgualdad()" class="btn btn-success">Login</button>
+                        <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
+                            <span id="iconoEmoji">👁️</span> <span id="textoBoton">Mostrar</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+
+
+
+
+
+        <footer class="row  col-12 col-sd-12 col-md-12 col-lg-12 border ">@Copyright - 2026<br>Todos los derechos
+            reservados a Daniel Rojas</be>
+        </footer>
+    </div>
+
+
+    </div>
+    <script>
+        function mostrarOcultar(boton) {
+            // Seleccionamos ambos inputs usando sus nuevos IDs únicos
+            var pass1 = document.getElementById("miPassword1");
+            var pass2 = document.getElementById("miPassword2");
+
+            var texto = document.getElementById("textoBoton");
+            var emoji = document.getElementById("iconoEmoji");
+
+            // Evaluamos el estado del primero (ambos cambian juntos)
+            if (pass1.type === "password") {
+                pass1.type = "text";
+                pass2.type = "text";
+
+                texto.textContent = "Ocultar";
+                emoji.textContent = "🙈";
+                boton.classList.replace("btn-warning", "btn-danger");
+            } else {
+                pass1.type = "password";
+                pass2.type = "password";
+
+                texto.textContent = "Mostrar";
+                emoji.textContent = "👁️";
+                boton.classList.replace("btn-danger", "btn-warning");
+            }
+        }
+
+    </script>
+    <script>
+        function verificarIgualdad() {
+            // Obtener los valores de los inputs
+            var input1 = document.getElementById("miPassword1").value;
+            var input2 = document.getElementById("miPassword2").value;
+
+            // Comparar si son iguales
+            if (input1 === input2) {
+                // Enviar a otro archivo si son iguales
+                window.location.href = "pagina_destino.html";
+            } else {
+                // Mensaje si no son iguales
+                alert("Los valores no son iguales. Inténtalo de nuevo.");
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        // Al cargar la página, forzamos un nuevo estado en el historial
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            // Si el usuario presiona "Atrás", lo enviamos hacia adelante de nuevo
+            history.go(1);
+        };
+    </script>
+
+    <!-- <script src="assets/js/scripts.js"></script>  -->
+    <!-- Enlace al script en la otra carpeta (js/) -->
+    <!-- <script src="assets/js/bootstrap.bundle.js"></script> -->
+    <!-- <script src="assets/js/scripts.js"></script> -->
+</body>
+
+</html>

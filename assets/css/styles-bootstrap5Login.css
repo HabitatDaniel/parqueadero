@@ -16,7 +16,6 @@
     /* border: 2px solid red; */
     display: flex;
     flex-direction: column;
-    background-color: yellow;
     /* Apila los elementos uno abajo del otro */
 }
 
@@ -99,7 +98,9 @@ body {
 }
 
 .form-Inicio .form-titulo {
-    background-color: green;
+    border: 2px solid white; /* Grosor, estilo y color del borde */
+border-radius: 20px;       /* Nivel de redondeado de las esquinas */
+color:white;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -110,7 +111,6 @@ body {
 
 
 .form-Inicio .form-label {
-    background-color: red;
     justify-content: center;
     align-items: center;
     flex-flow: row;
@@ -119,7 +119,6 @@ body {
 }
 
 .form-Inicio .form-input {
-    background-color: greenyellow;
     justify-content: center;
     align-items: center;
     flex-flow: row;
@@ -178,7 +177,6 @@ footer {
     }
 
     .form-Inicio .form-titulo {
-        background-color: green;
         height: 30%;
     }
   
@@ -208,14 +206,12 @@ footer {
     }
 
     .form-Inicio .form-titulo {
-        background-color: green;
         font-size: 30px;
         display: flex;
     }
 
     .form-Inicio .form-label {
         height: 30%;
-        background-color: cyan;
         justify-content: center;
         align-items: center;
         flex-flow: column;
@@ -225,7 +221,6 @@ footer {
     
     .form-Inicio .form-input {
         height: 30%;
-        background-color: coral;
         justify-content: center;
         align-items: center;
         flex-flow: column;

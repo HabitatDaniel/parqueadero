@@ -9,6 +9,6 @@ $_SESSION = array();
 session_destroy();
 
 // 4. Redirigir a la página de login o inicio
-header("Location: index.html");
+header("Location: ../../../index.html");
 exit(); // Importante para asegurar que el script se detenga
 ?>

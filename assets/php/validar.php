@@ -20,10 +20,9 @@ $clave = $_POST['clave'];
 $conn = new mysqli($servidor, "root", "", "parqueadero");
 
 
-$consulta = mysqli_query($conn, "SELECT * FROM empleado WHERE ccEmpleado = '$nombre' AND Clave = '$clave' LIMIT 1");
+$consulta = mysqli_query($conn, "SELECT Oid,ccEmpleado,Nombre,Tipo,Clave,CambioClave FROM empleado WHERE ccEmpleado = '$nombre' AND Clave = '$clave' LIMIT 1");
 
 if (!$consulta) {
-
 
 
     header("location: index.php");
@@ -35,8 +34,23 @@ if (!$consulta) {
 
 
 if ($usuario = mysqli_fetch_assoc($consulta)) {
-    $_SESSION['usuario'] = $_POST['usuario'];
-    header("location: welcome.php");
+
+    // Extraer el tipo del arreglo de resultados
+    $tipoUsuario = $usuario['Tipo'];
+    $CambioClave = $usuario['CambioClave'];
+
+
+    if ($usuario['CambioClave'] == false) {//Si no se ha hecho cambio de clave lo redirige a cambiarla
+        header("location: ../../pages/company/CambioClave.html");
+    } else {
+        $_SESSION['usuario'] = $_POST['usuario'];
+        if ($usuario['Tipo'] == "Estandar") {//Si el usuario es estandar lo manda al menu basico
+            header("location: MenuBasico.php");
+        } else {
+            header("location: ../../pages/company/MenuAdmin.html");
+        }
+    }
+
 } else {
     //header("location: index.html");
     // Código PHP

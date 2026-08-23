@@ -8,11 +8,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pagina Principal</title>
+<title>Menú Basico</title>
 <link rel="icon" type="image/x-icon" href="../img/IconoPrincipal.png">
-<!-- <link rel="stylesheet" href="assets/css/styles-box.css"> -->
-
-<!-- <link rel="stylesheet" href="assets/css/styles-flexbox.css"> -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/styles-bootstrap5.css">
 
@@ -43,9 +40,9 @@
             <?php
             session_start();
             if (!isset($_SESSION['usuario'])) {
-                header("Location: index.html"); // Volver si no hay sesión
+                header("Location: ../../index.html"); // Volver si no hay sesión
             }
-            echo "Bienvenido, " . $_SESSION['usuario']; ?>
+            echo "Bienvenido, user" . $_SESSION['usuario']; ?>
             <!-- Opción 1: Enlace a script de cierre (PHP)  <a href="#"><button onclick="cerrarSesion()">Cerrar Sesión</button></a> -->
             </h1>
         </div>
