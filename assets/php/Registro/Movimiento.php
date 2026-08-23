@@ -1,6 +1,18 @@
 <?php
+// 1. Buscamos el archivo de texto en la misma carpeta
+$archivo_ip = "../../enlace.txt";
+
+if (file_exists($archivo_ip)) {
+    // Lee el archivo y trim() limpia espacios o saltos de línea invisibles
+    $servidor = trim(file_get_contents($archivo_ip));
+} else {
+    // IP de respaldo por si el archivo .txt no existe o se borra
+    $servidor = "localhost";
+}
+
+
 // 1. Configuración de la conexión a XAMPP (MySQL)
-$servidor = "localhost";
+//$servidor = "localhost";
 $usuario = "root";       // Usuario por defecto de XAMPP
 $password = "";           // Contraseña por defecto de XAMPP (vacía)
 $base_datos = "parqueadero"; // Reemplaza con el nombre real de tu BD

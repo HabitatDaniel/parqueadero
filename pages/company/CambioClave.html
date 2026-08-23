@@ -39,7 +39,7 @@ $url_base = trim(file_get_contents("enlace.txt"));
                             placeholder="Repita Clave" required>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
-                        <a class="text-blue  " href="menu.html">Olvido su clave?</a>
+                        <!-- <a class="text-blue  " href="menu.html">Olvido su clave?</a> -->
                         <button type="button" onclick="verificarIgualdad()" class="btn btn-success">Login</button>
                         <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
                             <span id="iconoEmoji">👁️</span> <span id="textoBoton">Mostrar</span>
@@ -98,8 +98,10 @@ $url_base = trim(file_get_contents("enlace.txt"));
 
             // Comparar si son iguales
             if (input1 === input2) {
+                 var datoAEnviar = encodeURIComponent(input1);
+            
                 // Enviar a otro archivo si son iguales
-                window.location.href = "pagina_destino.html";
+                window.location.href = "../../assets/php/Empleado/guardarClave.php?dato=" + datoAEnviar;
             } else {
                 // Mensaje si no son iguales
                 alert("Los valores no son iguales. Inténtalo de nuevo.");

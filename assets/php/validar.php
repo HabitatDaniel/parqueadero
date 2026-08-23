@@ -7,7 +7,7 @@ if (file_exists($archivo_ip)) {
     $servidor = trim(file_get_contents($archivo_ip));
 } else {
     // IP de respaldo por si el archivo .txt no existe o se borra
-    $servidor = "192.168.17.86";
+    $servidor = "localhost";
 }
 
 

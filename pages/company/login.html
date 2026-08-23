@@ -35,14 +35,16 @@ $url_base = trim(file_get_contents("enlace.txt"));
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-input">
                     <label for="email" class="label">Correo electrónico:</label>
-                    <input type="password" name="clave" class="form-control" id="exampleFormControlInput1"
+                    <input type="password" name="clave" class="form-control" id="miPassword1"
                         placeholder="Clave" required>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
                     <a class="text-blue  " href="menu.html">Olvido su clave?</a>
                     <a class="text-white  " href="menu.html"><button type="submit"
                             class="btn btn-success">Login</button></a>
-                    <button type="reset" class="btn btn-warning">Cancelar</button>
+                   <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
+                            <span id="iconoEmoji">👁️</span> <span id="textoBoton">Mostrar</span>
+                        </button>
                 </div>
 
                 </form>
@@ -61,6 +63,30 @@ $url_base = trim(file_get_contents("enlace.txt"));
 
  
     </div>
+<script>
+    function mostrarOcultar(boton) {
+        // Seleccionamos el único input por su ID
+        var pass1 = document.getElementById("miPassword1");
+
+        var texto = document.getElementById("textoBoton");
+        var emoji = document.getElementById("iconoEmoji");
+
+        // Evaluamos el estado de este único input
+        if (pass1.type === "password") {
+            pass1.type = "text";
+
+            texto.textContent = "Ocultar";
+            emoji.textContent = "🙈";
+            boton.classList.replace("btn-warning", "btn-danger");
+        } else {
+            pass1.type = "password";
+
+            texto.textContent = "Mostrar";
+            emoji.textContent = "👁️";
+            boton.classList.replace("btn-danger", "btn-warning");
+        }
+    }
+</script>
 
     <script type="text/javascript">
         // Al cargar la página, forzamos un nuevo estado en el historial
