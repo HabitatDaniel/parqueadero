@@ -51,7 +51,7 @@
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             </div>
             <div id="otrolado1">
-                <img src="bannerlateral.gif" width="120" height="20" alt="">
+                                 <a class="text-red  " href="../../assets/php/Otros/logout.php">Cerrar Sesión</a>
             </div>
             <div id="principal1">
                 <H1>Proceso Ingresos - Activos Fijos </h1>
