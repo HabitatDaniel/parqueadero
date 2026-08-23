@@ -41,7 +41,9 @@ if ($usuario = mysqli_fetch_assoc($consulta)) {
 
 
     if ($usuario['CambioClave'] == false) {//Si no se ha hecho cambio de clave lo redirige a cambiarla
-        header("location: ../../pages/company/CambioClave.html");
+        //  var datoAEnviar = encodeURIComponent($User);
+        header("location: ../../pages/company/CambioClave.html?ccEmpleado=" . $nombre);
+      //  header("location: ../../pages/company/CambioClave.html");
     } else {
         $_SESSION['usuario'] = $_POST['usuario'];
         if ($usuario['Tipo'] == "Estandar") {//Si el usuario es estandar lo manda al menu basico

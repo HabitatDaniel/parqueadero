@@ -1,9 +1,9 @@
 <?php 
- 1. Cargamos la URL desde tu archivo .txt
+// 1. Cargamos la URL desde tu archivo .txt
 $url_base = trim(file_get_contents("enlace.txt")); 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -26,101 +26,89 @@ $url_base = trim(file_get_contents("enlace.txt"));
         <!-- DIV CENTRAL -->
         <section id="portafolio" class="row formulario">
             <div class="form-Inicio border">
-                <form action="../../assets/php/validar.php" method="post" class="formato" autocomplete="off">
+                <!-- Se quita el action tradicional porque controlamos el envío con JavaScript -->
+                <form class="formato" autocomplete="off">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-titulo">CAMBIAR CLAVE</div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                        <label for="nombre" class="label">Clave Nueva:</label>
+                        <label for="miPassword1" class="label">Clave Nueva:</label>
                         <input type="password" name="usuario" class="form-control" id="miPassword1"
                             placeholder="Nueva Clave" required autofocus>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-input">
-                        <label for="email" class="label">Repita la clave:</label>
+                        <label for="miPassword2" class="label">Repita la clave:</label>
                         <input type="password" name="clave" class="form-control" id="miPassword2"
                             placeholder="Repita Clave" required>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
-                        <!-- <a class="text-blue  " href="menu.html">Olvido su clave?</a> -->
-                        <button type="button" onclick="verificarIgualdad()" class="btn btn-success">Login</button>
+                        <button type="button" onclick="verificarIgualdad()" class="btn btn-success">Guardar Clave</button>
                         <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
                             <span id="iconoEmoji">👁️</span> <span id="textoBoton">Mostrar</span>
                         </button>
                     </div>
-
                 </form>
             </div>
         </section>
 
-
-
-
-
-
-        <footer class="row  col-12 col-sd-12 col-md-12 col-lg-12 border ">@Copyright - 2026<br>Todos los derechos
-            reservados a Daniel Rojas</be>
+        <footer class="row  col-12 col-sd-12 col-md-12 col-lg-12 border ">
+            @Copyright - 2026<br>Todos los derechos reservados a Daniel Rojas
         </footer>
     </div>
 
-
-    </div>
     <script>
         function mostrarOcultar(boton) {
-            // Seleccionamos ambos inputs usando sus nuevos IDs únicos
             var pass1 = document.getElementById("miPassword1");
             var pass2 = document.getElementById("miPassword2");
-
             var texto = document.getElementById("textoBoton");
             var emoji = document.getElementById("iconoEmoji");
 
-            // Evaluamos el estado del primero (ambos cambian juntos)
             if (pass1.type === "password") {
                 pass1.type = "text";
                 pass2.type = "text";
-
                 texto.textContent = "Ocultar";
                 emoji.textContent = "🙈";
                 boton.classList.replace("btn-warning", "btn-danger");
             } else {
                 pass1.type = "password";
                 pass2.type = "password";
-
                 texto.textContent = "Mostrar";
                 emoji.textContent = "👁️";
                 boton.classList.replace("btn-danger", "btn-warning");
             }
         }
-
     </script>
+
     <script>
         function verificarIgualdad() {
-            // Obtener los valores de los inputs
             var input1 = document.getElementById("miPassword1").value;
             var input2 = document.getElementById("miPassword2").value;
 
-            // Comparar si son iguales
+            // Validar que no envíen campos vacíos
+            if(input1.trim() === "" || input2.trim() === "") {
+                alert("Por favor, completa ambos campos.");
+                return;
+            }
+
             if (input1 === input2) {
-                 var datoAEnviar = encodeURIComponent(input1);
-            
-                // Enviar a otro archivo si son iguales
-                window.location.href = "../../assets/php/Empleado/guardarClave.php?dato=" + datoAEnviar;
+                // 1. Obtener la cédula (ccEmpleado) que viene en la URL actual de esta página
+                var parametrosUrl = new URLSearchParams(window.location.search);
+                var cedula = parametrosUrl.get("ccEmpleado") || ""; 
+
+                // 2. Codificar los datos para viajar seguros por URL
+                var datoClave = encodeURIComponent(input1);
+                var datoCedula = encodeURIComponent(cedula);
+                // 3. Enviar AMBOS datos en la URL usando el conector '&'
+                window.location.href = "../../assets/php/Empleado/guardarClave.php?dato=" + datoClave + "&ccEmpleado=" + datoCedula;
             } else {
-                // Mensaje si no son iguales
                 alert("Los valores no son iguales. Inténtalo de nuevo.");
             }
         }
     </script>
+
     <script type="text/javascript">
-        // Al cargar la página, forzamos un nuevo estado en el historial
         history.pushState(null, null, location.href);
         window.onpopstate = function () {
-            // Si el usuario presiona "Atrás", lo enviamos hacia adelante de nuevo
             history.go(1);
         };
     </script>
-
-    <!-- <script src="assets/js/scripts.js"></script>  -->
-    <!-- Enlace al script en la otra carpeta (js/) -->
-    <!-- <script src="assets/js/bootstrap.bundle.js"></script> -->
-    <!-- <script src="assets/js/scripts.js"></script> -->
 </body>
-
 </html>

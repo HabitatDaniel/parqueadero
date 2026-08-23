@@ -24,11 +24,12 @@ if ($conexion->connect_error) {
 
 // Capturar el parámetro 'dato' de la URL. Si no existe, queda vacío.
 $datoRecibido = $_GET['dato'] ?? '';
-
+// Capturar el parámetro 'dato' de la URL. Si no existe, queda vacío.
+$datoCedula = $_GET['ccEmpleado'] ?? '';
 // Variables para la consulta
 $clave_empleado = $datoRecibido; // Usamos el dato directo en la consulta preparada
 $cambio = 1;
-$ccEmpleado = 1026292170; // Tu cédula objetivo
+$ccEmpleado = $datoCedula; // Tu cédula objetivo
 
 // CORRECCIÓN: Usamos UPDATE en lugar de INSERT INTO y marcamos con '?' los datos variables
 $sql = "UPDATE empleado SET Clave = ?, CambioClave = ? WHERE ccEmpleado = ?";
@@ -40,15 +41,22 @@ if ($stmt) {
     // "sii" significa: Texto (string), Entero (integer), Entero (integer)
     // Esto vincula de forma segura tus variables a los '?' en la consulta SQL
     $stmt->bind_param("sii", $clave_empleado, $cambio, $ccEmpleado);
-    
+
     // Ejecutar la consulta
     if ($stmt->execute()) {
         echo "Datos guardados con éxito.";
-          header("location: ../../../index.html");
+  
+        //     header("location: ../../../index.html");
+
+        echo "<script>
+    alert('Datos Guardados con éxito. ');
+    window.location.href = '../../../index.html';
+</script>";
+        exit(); // Detiene el script PHP correctamente
     } else {
         echo "Error al ejecutar la consulta: " . $stmt->error;
     }
-    
+
     // Cerrar la sentencia preparada
     $stmt->close();
 } else {
