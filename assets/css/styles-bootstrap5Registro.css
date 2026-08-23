@@ -2,22 +2,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+        /* background-color: yellow; */
 }
 
 .contenedor {
     /* background-color: #00947F; */
-    /* background-color: red; */
+    width: 100%;
+    background-color:#F4F7F6;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    height: 700px;
+    height: 800px;
 }
 
 
 .panelder {
-    /* background-color: wheat; */
+    background-color:#266E61;
+    color: white;
     width: 50%;
     height: 100%;
     text-align: center;
@@ -54,7 +57,7 @@
 }
 
 .panelizq {
-    /* background-color: wheat; */
+    background-color: ORANGE;
     width: 50%;
     height: 100%;
     text-align: center;

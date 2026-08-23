@@ -7,12 +7,17 @@
 
     <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
     <title>Panel Vehiculo</title>
+    <!-- <link rel="stylesheet" href="../../css/bootstrap.css"> -->
+    <!-- <link rel="stylesheet" href="../../css/styles-bootstrap5.css"> -->
     <link rel="stylesheet" href="../../css/styles-bootstrap5Registro.css">
 </head>
 
 <body>
     <!-- <div class="menud"> -->
     <div class="col-12 col-sm-12 col-md-12 col-lg-12  contenedor ">
+        <div class="col-12 col-sm-2 col-md-12 col-lg-12  ">
+            <img src="../../../assets/img/logo_SDHT_n.png" class="img-fluid border" alt="Imagen Portafolio" />
+        </div>
         <div class="col-12 col-sm-2 col-md-12 col-lg-6 panelder ">
             <div class="col-12 col-sm-2 col-md-12 col-lg-6 superiorder ">
                 formulario
@@ -114,10 +119,12 @@
                         $id = $placa_mayuscula;
 
                         echo "<div style='margin-top: 15px;'>";
-                        echo "<a href='editar.php?id=$id' style='padding: 8px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-right: 10px;'>Editar Vehículo</a>";
+                        //  echo "<button onclick='enviarDatos() class='btn btn-success'>Ir a la otra página</button>";
+                        //  echo "<a href='editar.php?id=$id' style='padding: 8px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-right: 10px;'> <button onclick='enviarDatos()'>Ir a la otra página</button></a>";
                         echo "<a href='../welcome.php'  style='padding: 8px 15px; background-color: orange; color: white; text-decoration: none; border-radius: 4px;'>Cancelar</a>";
                         ?>
-                        <button onclick="enviarDatos()">Ir a la otra página</button>
+                        <button onclick="enviarDatos()" class="btn btn-success">Registrar Entrada</button>
+
                         <script>
                             function enviarDatos() {
                                 const placaVehiculo = <?php echo json_encode($_GET['placa'] ?? ''); ?>;
@@ -128,7 +135,30 @@
 
                         </script>
 
+                       
+                        <div class="col-12 col-sm-2 col-md-12 col-lg-6 inferiorder ">
                         <?php
+
+
+                        // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
+                        echo "<h2>Datos del Conductor</h2>";
+                        echo "<p><strong>Id Conductor Asociado:</strong> " . htmlspecialchars($id_conductor_vehiculo) . "</p>";
+                        echo "<p><strong>Nombre:</strong> " . htmlspecialchars($nombre_conductor) . "</p>";
+                        echo "<p><strong>Teléfono:</strong> " . htmlspecialchars($telefono_conductor) . "</p>";
+
+                        $carpeta_fotos = "../../../Soportes/Vehiculo/" . $placa_mayuscula . "/";
+                        //$nombre_foto =  "FotoFrente.JPG";
+                        $nombre_fotoLateral = "FotoLateral.png";
+
+                        if (empty($nombre_foto)) {
+                            $nombre_foto = "default.jpg";
+                        }
+
+                        $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
+                        $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+                        ?>
+                    </div>
+                     <?php
                         echo "</div>";
                     } else {
                         echo "<p style='color: red;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p>";

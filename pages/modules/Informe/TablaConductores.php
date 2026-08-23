@@ -33,16 +33,16 @@
             }
 
             // 2. Consulta SQL tradicional
-            $sql = "SELECT OID, ccConductor, nombre FROM conductor";
+            $sql = "SELECT Oid, IdConductor, Nombre FROM conductor";
             $resultado = mysqli_query($conexion, $sql);
 
             // 3. Recorrer los datos con funciones tradicionales
             if (mysqli_num_rows($resultado) > 0) {
                 while($fila = mysqli_fetch_assoc($resultado)) {
                     echo "<tr>";
-                    echo "<td>" . $fila["OID"] . "</td>";
-                    echo "<td>" . $fila["ccConductor"] . "</td>";
-                    echo "<td>" . $fila["nombre"] . "</td>";
+                    echo "<td>" . $fila["Oid"] . "</td>";
+                    echo "<td>" . $fila["IdConductor"] . "</td>";
+                    echo "<td>" . $fila["Nombre"] . "</td>";
                     echo "</tr>";
                 }
             } else {

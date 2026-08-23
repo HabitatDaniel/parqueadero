@@ -20,7 +20,15 @@
 
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="../../pages/modules/products/patineta_read.php">Clientes</a>
+        <table>
+            <th>
+                <td>hola</td>
+                <td>hola</td>
+                <td>hola</td>
+            </th>
+        </table>
+        <a href="../../pages/modules/informe/TablaConductores.php">Conductores</a>
+        <a href="../../pages/modules/informe/TablaMovimientos.php">Movimientos</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
 

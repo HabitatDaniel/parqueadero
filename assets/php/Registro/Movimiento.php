@@ -22,43 +22,44 @@ if (!empty($placa)) {
 
   // Usamos Prepared Statements para evitar inyecciones SQL (Seguridad)
   // Asumimos que tu tabla tiene una columna llamada 'placa' y opcionalmente 'fecha' (TIMESTAMP automático)
-  $sql = "INSERT INTO movimiento (IdVehiculo) VALUES (?)";
+  // $sql = "INSERT INTO movimiento (IdVehiculo) VALUES (?)";
 
+  $sql = "INSERT INTO movimiento (IdVehiculo, fecha_entrada) VALUES (?, NOW())";
   $stmt = $conexion->prepare($sql);
   $stmt->bind_param("s", $placa); // "s" significa que el parámetro es un String
 
   if ($stmt->execute()) {
     echo "<div class='alert alert-success'>Movimiento registrado con éxito en XAMPP.</div>";
     // Imprime la etiqueta meta que fuerza la redirección en 5 segundos
-   echo '<meta http-equiv="refresh" content="2;url=../Welcome.php">';
+    echo '<meta http-equiv="refresh" content="2;url=../Welcome.php">';
     ?>
-    
-<script> let segundos = 2;
-  const elementoContador = document.getElementById('contador');
 
-  // Actualiza el número en pantalla cada 1 segundo
-  const intervalo = setInterval(function() {
-      segundos--;
-      elementoContador.textContent = segundos;
-      
-      if (segundos <= 0) {
+    <script> let segundos = 2;
+      const elementoContador = document.getElementById('contador');
+
+      // Actualiza el número en pantalla cada 1 segundo
+      const intervalo = setInterval(function () {
+        segundos--;
+        elementoContador.textContent = segundos;
+
+        if (segundos <= 0) {
           clearInterval(intervalo);
-          
+
           // CRUCIAL: .replace() elimina esta página del historial del navegador
-          window.location.replace("../welcome.php"); 
-      }
-  }, 1000);
-</script>
+          window.location.replace("../welcome.php");
+        }
+      }, 1000);
+    </script>
     <script>
-  // Inserta un estado falso en el historial del navegador inmediatamente
-  window.history.pushState(null, null, window.location.href);
-  
-  // Detecta si el usuario presiona el botón "Atrás"
-  window.onpopstate = function () {
-      // Al detectar el retroceso, vuelve a empujar el estado actual al frente
-      window.history.go(1);
-  };
-</script>
+      // Inserta un estado falso en el historial del navegador inmediatamente
+      window.history.pushState(null, null, window.location.href);
+
+      // Detecta si el usuario presiona el botón "Atrás"
+      window.onpopstate = function () {
+        // Al detectar el retroceso, vuelve a empujar el estado actual al frente
+        window.history.go(1);
+      };
+    </script>
     <?php
   } else {
     echo "<div class='alert alert-danger'>Error al registrar: " . $stmt->error . "</div>";
