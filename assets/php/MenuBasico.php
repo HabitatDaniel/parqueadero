@@ -92,6 +92,19 @@
                             class="btn btn-secondary text-white">Registrar</button></a>
                 </div>
             </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 port-col ">
+                <div class="col row-4 dato"><a>VEHÍCULOS</a><br>
+                    <img src="../../assets/img/portafolio-1.png" class="img-fluid border" alt="Imagen Portafolio" />
+                    <!-- <div class="campo">Por esta razón, resulta necesario identificar los principales riesgos de
+                        seguridad de la información presentes en UNIMINUTO y proponer medidas orientadas al
+                        fortalecimiento de la protección de los datos. Asimismo, se busca promover una cultura de
+                        ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
+                        buenas prácticas en el manejo de la información.</div> -->
+                        <br>
+                    <a href="../../pages/modules/vehiculo/Vehiculo.html"><button type="button"
+                            class="btn btn-secondary text-white">Registrar</button></a>
+                </div>
+            </div>
             <div class="col-12 col-sm-12 col-md-6 col-lg-4  port-col ">
                 <div class="col row-4 dato"><a>BICICLETAS</a><br>
                     <img src="../../assets/img/bicicleta.png" class="img-fluid border" alt="Imagen Portafolio" />

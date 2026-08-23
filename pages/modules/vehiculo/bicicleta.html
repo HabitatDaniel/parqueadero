@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Vehículo por Placa</title>
-
-    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Vehiculo.css ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buscar Vehículo</title>
+        <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
+    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Busqueda.css ">
 </head>
-
 <body>
-    <div class="contenedor">
 
-        <h2>Buscar Información del Vehículo</h2>
-
-        <!-- El formulario envía el dato al archivo del servidor (ej. buscar.php) -->
-        <form action="../../../assets/php/Busqueda/BuscarBicicleta.php" method="GET">
-            <label for="placa">
-                <h1>Ingrese la Placa del Vehículo:</h1>
-            </label>
-            <input type="text" id="placa" name="placa" placeholder="Ej: ABC123" required>
-            <button type="submit" class="btn btn-secondary text-white">Gris Énfasis</button>
-
-        </form>
-    </div>
-
+    <!-- El formulario envuelve la estructura interna de la tarjeta -->
+    <!-- Cambia "resultado.html" por el nombre de tu página de destino -->
+    <form action="../../../assets/php/Busqueda/BuscarVehiculo.php" method="GET" class="card">
+        
+        <div class="icon-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
+  <path d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5m1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139zM8 9.057 9.598 6.5H6.402zM4.937 9.5a2 2 0 0 0-.487-.877l-.548.877zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53z"/>
+</svg>
+        </div>
+        
+        <h2>Buscar Información</h2>
+        <p>Ingrese la identificación del conductor para comenzar</p>
+        
+        <div class="input-group">
+            <!-- Es obligatorio el atributo 'name' para que viaje por GET -->
+            <input type="text" 
+                   id="placa"
+                   name="placa" 
+                   class="plate-input" 
+                   placeholder="ABC123" 
+                   maxlength="10" 
+                   autocapitalize="characters" 
+                   autocorrect="off" 
+                   autocomplete="off"
+                   required>
+        </div>
+        
+        <!-- Al ser de tipo 'submit', procesará el formulario de manera nativa -->
+        <button type="submit" class="btn-search">BUSCAR</button>
+        
+    </form>
 
 </body>
-
 </html>

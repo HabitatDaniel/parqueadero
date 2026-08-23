@@ -3,27 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Buscar Patineta por ID</title>
-
-    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Vehiculo.css ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Buscar Vehículo</title>
+    <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
+    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Busqueda.css ">
 </head>
 
 <body>
-    <div class="contenedor">
 
-        <h2>Buscar Información del Vehículo</h2>
+    <!-- El formulario envuelve la estructura interna de la tarjeta -->
+    <!-- Cambia "resultado.html" por el nombre de tu página de destino -->
+    <form action="../../../assets/php/Busqueda/BuscarVehiculo.php" method="GET" class="card">
 
-        <!-- El formulario envía el dato al archivo del servidor (ej. buscar.php) -->
-        <form action="../../../assets/php/Busqueda/BuscarPatineta.php" method="GET">
-            <label for="placa">
-                <h1>Ingrese el ID del Usuario de la patineta:</h1>
-            </label>
-            <input type="text" id="placa" name="placa" placeholder="Ej: Usuario" required>
-            <button type="submit" class="btn btn-secondary text-white">Gris Énfasis</button>
+        <div class="icon-container">
+            <!-- <svg class="vehicle-icon" viewBox="0 0 24 24"> -->
+            <!-- <path d="M19.5,9.5C20.88,9.5 22,10.62 22,12C22,13.38 20.88,14.5 19.5,14.5C18.12,14.5 17,13.38 17,12C17,10.62 18.12,9.5 19.5,9.5M4.5,9.5C5.88,9.5 7,10.62 7,12C7,13.38 5.88,14.5 4.5,14.5C3.12,14.5 2,13.38 2,12C2,10.62 3.12,9.5 4.5,9.5M19.5,8C17.29,8 15.5,9.79 15.5,12C15.5,14.21 17.29,16 19.5,16C21.71,16 23.5,14.21 23.5,12C23.5,9.79 21.71,8 19.5,8M4.5,8C2.29,8 0.5,9.79 0.5,12C0.5,14.21 2.29,16 4.5,16C6.71,16 8.5,14.21 8.5,12C8.5,9.79 6.71,8 4.5,8M12,5C10.5,5 9,6.5 9,8H15C15,6.5 13.5,5 12,5M17,8H7V10H17V8M16,11H8V13H16V11Z"/> -->
+            <!-- </svg> -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-scooter"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M9 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-.39l1.4 7a2.5 2.5 0 1 1-.98.195l-.189-.938-2.43 3.527A.5.5 0 0 1 9.5 13H4.95a2.5 2.5 0 1 1 0-1h4.287l2.831-4.11L11.09 3H9.5a.5.5 0 0 1-.5-.5M3.915 12a1.5 1.5 0 1 0 0 1H2.5a.5.5 0 0 1 0-1zm8.817-.789A1.499 1.499 0 0 0 13.5 14a1.5 1.5 0 0 0 .213-2.985l.277 1.387a.5.5 0 0 1-.98.196z" />
+            </svg>
+        </div>
 
-        </form>
-    </div>
+        <h2>Buscar Información</h2>
+        <p>Ingrese la placa del vehículo para comenzar</p>
 
+        <div class="input-group">
+            <!-- Es obligatorio el atributo 'name' para que viaje por GET -->
+            <input type="text" id="placa" name="placa" class="plate-input" placeholder="ABC123" maxlength="7"
+                autocapitalize="characters" autocorrect="off" autocomplete="off" required>
+        </div>
+
+        <!-- Al ser de tipo 'submit', procesará el formulario de manera nativa -->
+        <button type="submit" class="btn-search">BUSCAR</button>
+
+    </form>
 
 </body>
 
