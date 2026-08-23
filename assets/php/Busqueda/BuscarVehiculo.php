@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
     <title>Panel Vehiculo</title>
-    <link rel="stylesheet" href="../../css/styles-bootstrap5.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/styles-bootstrap5Registro.css">
 </head>
 
@@ -63,8 +63,8 @@
                         if ($conductor = $res_cond->fetch_assoc()) {
                             $nombre_conductor = $conductor['Nombre'];
                             $telefono_conductor = $conductor['Celular'];
-                            $piso=$conductor['Piso'];
-                            $area=$conductor['Area'];
+                            $piso = $conductor['Piso'];
+                            $area = $conductor['Area'];
                         }
                         $stmt_cond->close();
                     }
@@ -135,32 +135,27 @@
                     </div>
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorboton ">
-                    <?php
+                    <button onclick="enviarDatos()" class="btn btn-success">Registrar</button>
 
-                    //  echo "<button onclick='enviarDatos() class='btn btn-success'>Ir a la otra página</button>";
-                    //  echo "<a href='editar.php?id=$id' style='padding: 8px 15px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-right: 10px;'> <button onclick='enviarDatos()'>Ir a la otra página</button></a>";
-                    echo "<a href='../welcome.php'  style=' background-color: orange; color: white; text-decoration: none; border-radius: 4px;'>Cancelar</a>";
-                    ?>
-                    <button onclick="enviarDatos()" class="btn btn-success">Registrar Entrada</button>
+                    <a href="../MenuBasico.php"><button class="btn btn-warning">Cancelar</button></a>
 
                     <script>
                         function enviarDatos() {
                             const placaVehiculo = <?php echo json_encode($_GET['placa'] ?? ''); ?>;
-
                             // Redireccionamos pasando la placa en la URL a nuestro nuevo archivo PHP
                             window.location.href = "../Registro/Movimiento.php?placa=" + encodeURIComponent(placaVehiculo);
                         }
 
                     </script>
                 </div>
-                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
-                         <?php
+                <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
+                    <?php
                     echo "Ubicación del conductor
-                     <h3>". htmlspecialchars($area) ."</h3>
-                     <h3>". htmlspecialchars($piso) ."</h3>"
-                     ?>
-                     </div>
-                     <?php
+                     <h3>" . htmlspecialchars($area) . "</h3>
+                     <h3>" . htmlspecialchars($piso) . "</h3>"
+                        ?>
+                </div>
+                <?php
                 } else {
                     echo "<p style='color: red;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p>";
                 }
