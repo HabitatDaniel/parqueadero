@@ -92,12 +92,16 @@
                     //$nombre_foto =  "FotoFrente.JPG";
                     $nombre_fotoLateral = "FotoLateral.png";
 
-                    if (empty($nombre_foto)) {
-                        $nombre_foto = "default.jpg";
-                    }
-
-                    $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
+                    // 1. Construir la ruta original
                     $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+
+                    // 2. Verificar si el archivo NO existe en el servidor
+                    if (!file_exists($ruta_completa_fotoLateral)) {
+                        $carpeta_fotos = "../../../assets/img/";
+                        $nombre_fotoLateral = "portafolio-1.png";
+                        // Reasignar la ruta por defecto
+                        $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+                    }
                     echo "<img src='" . htmlspecialchars($ruta_completa_fotoLateral) . "' alt='Foto del vehículo' class='imagenprincipal'>";
                     ?>
                 </div>
@@ -119,6 +123,8 @@
                             ?>
                         </div>
                     </div>
+
+                    <!-- //PANEL INFERIOR DERECHO -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorder">
                         <div class="row gx-2 text-center">
                             <?php
@@ -146,7 +152,7 @@
                             $nombre_fotoLateral = "FotoLateral.png";
 
                             if (empty($nombre_foto)) {
-                                $nombre_foto = "default.jpg";
+                                $nombre_foto = "../../img/portafolio-1.png";
                             }
 
                             $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
@@ -154,7 +160,9 @@
                             ?>
                         </div>
                     </div>
+
                 </div>
+
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorboton ">
                     <button onclick="enviarDatos()" class="btn btn-success">Registrar</button>
 

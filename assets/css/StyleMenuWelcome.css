@@ -1,8 +1,15 @@
 
 body {
   font-family: "Lato", sans-serif;
+
 }
 
+.inicio{
+    background-color: #00947F;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .sidenav {
   height: 100%;
   width: 0;
