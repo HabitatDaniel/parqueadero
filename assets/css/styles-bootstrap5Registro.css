@@ -16,10 +16,11 @@
 }
 
 .logo {
-    width: 100%;
-    display: flex; /* Reactivado */
-    align-items: center;
+    /* padding-left: 5%; */
+    width: 50%;
+    align-items:center;
     justify-content: center;
+    display: flex; /* Reactivado */
 }
 
 .logo .imagen {
@@ -38,8 +39,8 @@
     height: 100px;
     /* height: auto; Dinámico para evitar cortes */
     min-height: 80px;
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items:left;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -125,7 +126,7 @@
     color: white;
     width: 90%;
     height: 50px;
-    text-align: center;
+    text-align: left;
     align-items: center;
     justify-content: center;
     display: flex;

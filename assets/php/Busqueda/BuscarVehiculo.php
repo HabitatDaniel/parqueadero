@@ -136,7 +136,7 @@
                             echo "<div class='col-6'><div class='panellabel'><strong>Telefono:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panellabel'><strong>Correo:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($telefono_conductor) . "</div></div>";
-                            echo "<div class='col-6'><div class='panelinput texto-azul'>" . htmlspecialchars($correo_conductor) . "</div></div>";
+                            echo "<div class='col-6'><div class='panelinput texto-azul'><a href='mailto:". htmlspecialchars($correo_conductor) ."' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($correo_conductor) . "</a></div></div>";
 
                             $carpeta_fotos = "../../../Soportes/Vehiculo/" . $placa_mayuscula . "/";
                             //$nombre_foto =  "FotoFrente.JPG";
