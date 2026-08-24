@@ -102,14 +102,14 @@
                     ?>
                 </div>
                 <div class="col-12 col-sm-2 col-md-12 col-lg-12 panelinferior ">
-                    <div class="    col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorizq">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorizq">
                         <!-- <h3>Información Técnica</h3> -->
                         <div class="row gx-2 text-center">
                             <?php
-                             echo "<strong>Datos Tecnicos</strong>";
+                            echo "<strong>Datos Tecnicos</strong>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Placa:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Tipo:</strong></p></div></div>";
-                            echo "<div class='col-6'><div class='panelinput'>". htmlspecialchars($placa_mayuscula) ."</div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($placa_mayuscula) . "</div></div>";
                             echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($vehiculo['Tipo']) . "</div></div>";
                             echo "<div class='col-6'><div class='panellabel'><strong>Marca:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panellabel'><strong>Color:</strong></p></div></div>";
@@ -121,35 +121,38 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorder">
                         <div class="row gx-2 text-center">
-                        <?php
-                        $id = $placa_mayuscula;
+                            <?php
+                            $id = $placa_mayuscula;
 
-                        //echo "<p><strong>Marca:</strong> " . htmlspecialchars($vehiculo['Marca']) . "</p>";
-                        //echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
-                
-                        // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
-                        echo "<strong>Datos del Conductor</strong>";
-                            echo "<div class='col-6'><div class='panellabel'><p><strong>Identificación:</strong></p></div></div>";
-                            echo "<div class='col-6'><div class='panellabel'><p><strong>Nombre:</strong></p></div></div>";
-                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($id_conductor_vehiculo) . "</div></div>";
-                            echo "<div class='col-6'><div class='panelinput'>" .htmlspecialchars($nombre_conductor) .  "</div></div>";
-                            echo "<div class='col-6'><div class='panellabel'><strong>Telefono:</strong></p></div></div>";
-                            echo "<div class='col-6'><div class='panellabel'><strong>Correo:</strong></p></div></div>";
-                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($telefono_conductor) . "</div></div>";
-                            echo "<div class='col-6'><div class='panelinput texto-azul'><a href='mailto:". htmlspecialchars($correo_conductor) ."' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($correo_conductor) . "</a></div></div>";
-
+                            //echo "<p><strong>Marca:</strong> " . htmlspecialchars($vehiculo['Marca']) . "</p>";
+                            //echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
+                    
+                            // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
+                            echo "<strong>Datos del Conductor</strong>";
+                            // echo "<div class='col-6 col-sm-12 col-md-12 col-lg-6'><div class='panelder'>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-1'><div class='panellabel'><p><strong>Identificación:</strong></p></div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-2'><div class='panellabel'><p><strong>Nombre:</strong></p></div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-3'><div class='panelinput'>" . htmlspecialchars($id_conductor_vehiculo) . "</div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-4'><div class='panelinput'>" . htmlspecialchars($nombre_conductor) . "</div></div>";
+                            //  echo "</div></div>";
+                            //echo "<div class='col-6 col-sm-12 col-md-12 col-lg-6'><div class='panelder'>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-5'><div class='panellabel'><strong>Telefono:</strong></p></div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-6'><div class='panellabel'><strong>Correo:</strong></p></div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-7'><div class='panelinput'><a href='https://api.whatsapp.com/send?phone=57" . htmlspecialchars($telefono_conductor) . "&text=hola,%20qu%C3%A9%20tal?%20Quisiera%20informaci%C3%B3n%20respecto%20a%20los%20productos%20ofrecidos%20en%20especifico:' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($telefono_conductor) . "</a></div></div>";
+                            echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-8'><div class='panelinput texto-azul'><a href='mailto:" . htmlspecialchars($correo_conductor) . "' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($correo_conductor) . "</a></div></div>";
+                            //echo "</div></div>";
                             $carpeta_fotos = "../../../Soportes/Vehiculo/" . $placa_mayuscula . "/";
                             //$nombre_foto =  "FotoFrente.JPG";
                             $nombre_fotoLateral = "FotoLateral.png";
-                            
+
                             if (empty($nombre_foto)) {
                                 $nombre_foto = "default.jpg";
-                                }
-                                
-                                $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
-                                $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
-                                ?>
-                                </div>
+                            }
+
+                            $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
+                            $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorboton ">
@@ -168,7 +171,7 @@
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
                     <?php
-                    echo "<strong>"."Ubicación: ". htmlspecialchars($area) ." (". htmlspecialchars($piso) .")"."</strong>"
+                    echo "<strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong>"
                         ?>
                 </div>
                 <?php

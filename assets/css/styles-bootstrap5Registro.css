@@ -10,17 +10,20 @@
     text-align: center;
     align-items: center;
     display: flex;
-    flex-direction: column; /* Organiza todo hacia abajo */
-    min-height: 100vh; /* Permite que crezca de forma dinámica en celulares */
+    flex-direction: column;
+    /* Organiza todo hacia abajo */
+    min-height: 100vh;
+    /* Permite que crezca de forma dinámica en celulares */
     padding-bottom: 20px;
 }
 
 .logo {
     /* padding-left: 5%; */
     width: 50%;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-    display: flex; /* Reactivado */
+    display: flex;
+    /* Reactivado */
 }
 
 .logo .imagen {
@@ -28,6 +31,7 @@
     /* height: auto; */
     height: 50px;
 }
+
 .panelsuperior {
     background-color: #009480;
     padding: 2rem;
@@ -40,7 +44,7 @@
     /* height: auto; Dinámico para evitar cortes */
     min-height: 80px;
     text-align: left;
-    align-items:left;
+    align-items: left;
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -49,12 +53,14 @@
 .panelcentral {
     /* background-color: #009480; */
     width: 90%;
-    height: auto; /* Evita que la imagen se desborde */
+    height: auto;
+    /* Evita que la imagen se desborde */
     padding: 15px 0;
     text-align: center;
     align-items: center;
     justify-content: center;
-    display: flex; /* Reactivado para controlar la imagen */
+    display: flex;
+    /* Reactivado para controlar la imagen */
 }
 
 .imagenprincipal {
@@ -69,16 +75,36 @@
     /* background-color: red; */
     width: 90%;
     gap: 20px;
-    display: flex; /* Reactivado */
-    flex-direction: row; /* En PC se ven lado a lado */
+    display: flex;
+    /* Reactivado */
+    flex-direction: row;
+    /* En PC se ven lado a lado */
     padding: 20px 0;
 }
+
 .panelinferiorizq {
     border: 2px solid #ccc;
     /* background-color: orange; */
     border-radius: 30px;
     padding: 20px;
 }
+
+/* Colores para identificar cada caja */
+/* .caja-1 {
+    background-color: #3498db;
+}
+
+.caja-2 {
+    background-color: #e74c3c;
+}
+
+.caja-3 {
+    background-color: #2ecc71;
+}
+
+.caja-4 {
+    background-color: #f1c40f;
+} */
 
 /* El diseño visual va AQUÍ, en el hijo de la columna */
 .panellabel {
@@ -89,12 +115,14 @@
     /* border-radius: 15px; */
     /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Opcional: una sombra ligera */
 }
+
 .panelinput {
     /* Cambia al color que desees */
-    background-color: white; 
+    background-color: white;
     padding: 10px;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Opcional: una sombra ligera */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Opcional: una sombra ligera */
 }
 
 .panelinferiorder {
@@ -113,14 +141,15 @@
     justify-content: center;
     display: flex;
 }
-.panelinferiorboton .btn{
+
+.panelinferiorboton .btn {
     width: 40%;
 }
 
 .panelhooter {
     background-color: #009480;
     padding: 2rem;
-    border-radius:20px 20px 20px 20px;
+    border-radius: 20px 20px 20px 20px;
     border-top: 5px solid #009480;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     color: white;
@@ -135,14 +164,93 @@
 
 /*TABLET*/
 @media (max-width: 992px) {
+    .contenedor {
+        padding-left: 15px;
+        /* width: 100%; */
+    }
+
+    .panelsuperior {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+
     .panelinferior {
-        /* background-color: orange; */
-        width: 600px;
+        /* background-color: orange; /*Mantiene tu lógica de color de prueba */
+        flex-direction: column;
+        /* CRÍTICO: Los paneles se apilan uno abajo del otro en celular */
+        width: 95%;
+        height: 550px;
+        /* background-color: RED; */
+
+    }
+
+    .panelinferiorizq {
+        width: 100%;
+        /* Toma todo el ancho disponible en la fila apilada */
+        border: 2px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .panelinferiorder {
+        width: 100%;
+        /* Toma todo el ancho disponible abajo del izquierdo */
+        border: 2px solid #ccc;
+        /* padding: 5%; */
+
+        /* height: 250px; */
+        border-radius: 20px;
+        display: block;
+        flex-direction: column;
+        flex-flow: column;
+    }
+
+    .panelinferiorboton .btn {
+        width: 100%;
+    }
+
+
+    .panelinferiorder .panelinput {
+        /* background-color: red; */
+        /* font-size: 55%; */
+        width: 100%;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        /* padding: 15px; */
+    }
+
+    .panelinferiorboton {
+        /* background-color: ORANGE; */
+        position: static;
+        /* Quita el posicionamiento que causa el encimado */
+        width: 60%;
+        /* Hace que el botón ocupe todo el ancho */
+        margin-bottom: 10px;
+        /* Deja espacio con el panel de abajo */
+        height: 100PX;
+    }
+
+
+    .panelhooter {
+        width: 95%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 /*CELULARES*/
 @media (max-width: 767.98px) {
+    .contenedor {
+        /* width: ; */
+    }
+
+    .logo {
+        width: 100%;
+    }
+
     .panelsuperior {
         width: 95%;
         height: 20px;
@@ -152,37 +260,64 @@
         width: 95%;
     }
 
-.imagenprincipal {
-    max-width: 100%;
-    height: 100px;
-    /* height: auto; */
-    border-radius: 30px;
-}
-    .panelinferior {
-        /* background-color: orange; /*Mantiene tu lógica de color de prueba */
-        flex-direction: column; /* CRÍTICO: Los paneles se apilan uno abajo del otro en celular */
-        width: 95%;
-        height: 500px;
-    }
-    
-    .panelinferiorizq {
-        width: 100%; /* Toma todo el ancho disponible en la fila apilada */
-        border: 2px solid #ccc;
-        border-radius: 20px;
+    .imagenprincipal {
+        max-width: 100%;
+        height: 100px;
+        /* height: auto; */
+        border-radius: 30px;
     }
 
-    .panelinferiorder {
-        width: 100%; /* Toma todo el ancho disponible abajo del izquierdo */
-        border: 2px solid #ccc;
-        border-radius: 20px;
+    .panelinferior {
+        height: 550px;
+        /* background-color: crimson; */
+        /* display: flex; */
+        /* flex-direction: row-reverse; Si están uno al lado del otro */
+        /* grid-template-co<lumns: 1fr; Cambia a 1 sola columna */
     }
-    
-    .panelhooter {
-        width: 95%;
+
+    /* Cambiamos el orden visual con la propiedad 'order' */
+    .caja-1 {
+        order: 1;
+    }
+
+    .caja-2 {
+        order: 3;
+    }
+
+    /* El segundo pasa a ser el tercero */
+    .caja-3 {
+        order: 2;
+    }
+
+    /* El tercero pasa a ser el segundo */
+    .caja-4 {
+        order: 4;
+    }
+
+    .caja-5 {
+        order: 5;
+    }
+
+    .caja-6 {
+        order: 7;
+    }
+
+    /* El segundo pasa a ser el tercero */
+    .caja-7 {
+        order: 6;
+    }
+
+    /* El tercero pasa a ser el segundo */
+    .caja-8 {
+        order: 8;
     }
 }
 
 /*EXTRA SMALL*/
 @media (max-width: 575.98px) {
     /* Aquí puedes añadir ajustes finos para pantallas muy pequeñas */
+    .panelinferior{
+        height: 700px;
+        /* background-color: orange; */
+    }
 }
