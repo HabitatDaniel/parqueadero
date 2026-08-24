@@ -6,83 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="../../assets/img/IconoPrincipal.png">
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/styles-bootstrap5Menu.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/styles-bootstrap5.css">
 </head>
 
 <body>
-    <div class="contenedor">
-        <!-- MENU IZQUIERDO -->
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2 menuizq">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 ItemUno border">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <table>
+            <th>
+            <td>hola</td>
+            <td>hola</td>
+            <td>hola</td>
+            </th>
+        </table>
+        <a href="../../pages/modules/informe/TablaConductores.php">Consultar Empleado</a>
+        <a href="../../pages/modules/informe/TablaMovimientos.php">Registrar Empleado</a>
+        <a href="../../pages/modules/informe/TablaMovimientos.php">Eliminar Empleado</a>
+     
+    </div>
+    <div class="contenedor container-fluid-md ">
+        <!-- MENU SUPERIOR -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 encabezado">
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 Logo border">
                 <img src="../../assets/img/logo.png" alt="LOGO" />
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 ItemDos">
-                <div class="col-4 col-sm-4 col-md-4 col-lg-4 ItemDos">
-                    <img src="../../assets/img/usuario.png" alt="LOGO" class="border" />
-                </div>
-                <div class="row col-8 col-sm-8 col-md-8 col-lg-8 ItemDos">
-                    <a><b>Nombre:</b> Daniel Rojas</a><br>
-                    <a><b>Perfil:</b> Tecnico</a><br>
-                    <a><b>Edad:</b> 30</a><br>
-                </div>
+            <div class="col-8 col-sm-8 col-md-8 col-lg-8 text-end border">
+                <a class="text-white " href="#">Principal</a>
+                <a class="text-white " href="#portafolio">Calendario</a>
+                <a class="text-white " href="#nosotros">Alertas</a>
+                <a class="text-white  " href="#contacto">Actividad</a>
             </div>
-            <div class="row col-12 col-sm-12 col-md-12 col-lg-12 ItemTres border">
-                <b><a>MODULO 1</a></b><br>
-                <a>Consultar Usuario</a><br>
-                <a>Registrar Usuario</a><br>
-                <a>Eliminar Usuario</a><br>
-            </div>
-
-            <div class="row col-12 col-sm-12 col-md-12 col-lg-12 ItemTres border">
-                <b><a>MODULO 1</a></b><br>
-                <a>Consultar Usuario</a><br>
-                <a>Registrar Usuario</a><br>
-                <a>Eliminar Usuario</a><br>
-            </div>
-
-            <div class="row col-12 col-sm-12 col-md-12 col-lg-12 ItemTres border">
-                <b><a>MODULO 1</a></b><br>
-                <a>Consultar Usuario</a><br>
-                <a>Registrar Usuario</a><br>
-                <a>Eliminar Usuario</a><br>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 ItemUno">
-                <button type="submit"  class="btn btn-secondary text-white">Btn1</button><a>-</a> 
-                <button type="submit"  class="btn btn-secondary text-white">Btn2</button><a>-</a> 
-                <button type="submit"  class="btn btn-secondary text-white">Btn3</button><a>-</a> 
-                <button type="submit"  class="btn btn-secondary text-white">Btn4</button>
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2  border">
+                <a class="text-white  " href="../../assets/php/Otros/logout.php">Cerrar Sesión</a>
             </div>
         </div>
 
-        <!-- MENU DERECHO -->
-        <div class="col-10 col-sm-10 col-md-10 col-lg-10 menuder">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 menu">
-                <div class="col-10 col-sm-10 col-md-10 col-lg-10 text-end ItemUno border">
-                    <a class="text-white " href="#">Principal</a>
-                    <a class="text-white " href="#portafolio">Calendario</a>
-                    <a class="text-white " href="#nosotros">Alertas</a>
-                    <a class="text-white  " href="#contacto">Actividad</a>
-                </div>
-                <div class="col-2 col-sm-2 col-md-2 col-lg-2 ItemUno border">
-                                 <a class="text-white  " href="../../assets/php/Otros/logout.php">Cerrar Sesión</a>
-                </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 menuarr">
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 foto">
+                <img src="../../assets/img/usuario.png" alt="LOGO" class="img border" />
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 menu">
-                <a class="text-white " >Principal </a>
-                <a class="text-white " >> Calendario</a>
-                <a class="text-white " > > Alertas</a>
-                <a class="text-white  "> > Actividad</a>
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 menulateral">
+                <a><b>Nombre:</b> Daniel Rojas</a><br>
+                <a><b>Perfil:</b> Tecnico</a><br>
+                <a><b>Edad:</b> 30</a><br>
             </div>
-            <div class="col-2 col-sm-12 col-md-12 col-lg-10 menuContenedor">
-                <B>FRAME PRINCIPAL</B>
+        </div>
+
+        <div class=" col-12 col-sm-12 col-md-12 col-lg-12 modulos border">
+            <div class=" col-12 col-sm-12 col-md-12 col-lg-4  border">
+                <b> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Empleados</span></b><br>
             </div>
-            <div class="col-2 col-sm-2 col-md-2 col-lg-10 footer">
-                @Copyright - 2026<br>Todos los derechos
+
+            <div class=" col-12 col-sm-12 col-md-12 col-lg-4  border">
+                <b><a>MODULO 1</a></b><br>
+         
+            </div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4  border">
+                <b><a>MODULO 1</a></b><br>
+            </div>
+        </div>
+
+
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 menuContenedor">
+            <B>FRAME PRINCIPAL</B>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 footer">
+            @Copyright - 2026<br>Todos los derechos
             reservados a Daniel Rojas</br>
-            </div>
         </div>
     </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+
+        function cerrarSesion() {
+            sessionStorage.clear(); // Limpia almacenamiento local
+            // 2. Redirigir y reemplazar en el historial
+            window.location.replace("logout.php");
+        }
+
+
+
+    </script>
+
+    <script>
+        // Inserta un estado falso en el historial del navegador inmediatamente
+        window.history.pushState(null, null, window.location.href);
+
+        // Detecta si el usuario presiona el botón "Atrás"
+        window.onpopstate = function () {
+            // Al detectar el retroceso, vuelve a empujar el estado actual al frente
+            window.history.go(1);
+        };
+    </script>
 </body>
 
 </html>
