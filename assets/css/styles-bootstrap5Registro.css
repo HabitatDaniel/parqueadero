@@ -24,9 +24,9 @@
 
 .logo .imagen {
     width: 50%;
-    height: auto;
+    /* height: auto; */
+    height: 50px;
 }
-
 .panelsuperior {
     background-color: #009480;
     padding: 2rem;
@@ -35,7 +35,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     color: white;
     width: 90%;
-    height: auto; /* Dinámico para evitar cortes */
+    height: 100px;
+    /* height: auto; Dinámico para evitar cortes */
     min-height: 80px;
     text-align: center;
     align-items: center;
@@ -57,7 +58,7 @@
 
 .imagenprincipal {
     max-width: 100%;
-    height: 400px;
+    height: 200px;
     /* height: auto; */
     border-radius: 30px;
 }
@@ -71,12 +72,28 @@
     flex-direction: row; /* En PC se ven lado a lado */
     padding: 20px 0;
 }
-
 .panelinferiorizq {
-    width: 50%;
     border: 2px solid #ccc;
+    /* background-color: orange; */
     border-radius: 30px;
-    padding: 15px;
+    padding: 20px;
+}
+
+/* El diseño visual va AQUÍ, en el hijo de la columna */
+.panellabel {
+    /* background-color:red; Cambia al color que desees */
+    padding-left: 10px;
+    color: gray;
+    text-align: left;
+    /* border-radius: 15px; */
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); Opcional: una sombra ligera */
+}
+.panelinput {
+    /* Cambia al color que desees */
+    background-color: white; 
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Opcional: una sombra ligera */
 }
 
 .panelinferiorder {

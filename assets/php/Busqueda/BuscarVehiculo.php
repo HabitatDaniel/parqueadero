@@ -101,20 +101,29 @@
                     ?>
                 </div>
                 <div class="col-12 col-sm-2 col-md-12 col-lg-12 panelinferior ">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorizq">
-                        <h3>Información Técnica</h3>
-                        <?php
-                        echo "<p><strong>Placa:</strong> " . htmlspecialchars($placa_mayuscula) . "</p>";
-                        echo "<p><strong>Tipo:</strong> " . htmlspecialchars($vehiculo['Tipo']) . "</p>";
-                        echo "<p><strong>Marca:</strong> " . htmlspecialchars($vehiculo['Marca']) . "</p>";
-                        echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
-                        ?>
+                    <div class="    col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorizq">
+                        <!-- <h3>Información Técnica</h3> -->
+                        <div class="row gx-2 text-center">
+                            <?php
+                            echo "<div class='col-6'><div class='panellabel'><p><strong>Placa:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><p><strong>Tipo:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>". htmlspecialchars($placa_mayuscula) ."</div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($vehiculo['Tipo']) . "</div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><strong>Marca:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><strong>Color:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($vehiculo['Marca']) . "</div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($vehiculo['Color']) . "</div></div>";
+
+                            ?>
+                        </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorder">
                         <?php
                         $id = $placa_mayuscula;
 
-
+                        //echo "<p><strong>Marca:</strong> " . htmlspecialchars($vehiculo['Marca']) . "</p>";
+                        //echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
+                
                         // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
                         echo "<h3>Datos del Conductor</h3>";
                         echo "<p><strong>Id Conductor Asociado:</strong> " . htmlspecialchars($id_conductor_vehiculo) . "</p>";
