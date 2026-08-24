@@ -63,6 +63,7 @@
                         if ($conductor = $res_cond->fetch_assoc()) {
                             $nombre_conductor = $conductor['Nombre'];
                             $telefono_conductor = $conductor['Celular'];
+                            $correo_conductor = $conductor['Correo'];
                             $piso = $conductor['Piso'];
                             $area = $conductor['Area'];
                         }
@@ -105,6 +106,7 @@
                         <!-- <h3>Información Técnica</h3> -->
                         <div class="row gx-2 text-center">
                             <?php
+                             echo "<strong>Datos Tecnicos</strong>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Placa:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Tipo:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panelinput'>". htmlspecialchars($placa_mayuscula) ."</div></div>";
@@ -118,6 +120,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorder">
+                        <div class="row gx-2 text-center">
                         <?php
                         $id = $placa_mayuscula;
 
@@ -125,22 +128,28 @@
                         //echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
                 
                         // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
-                        echo "<h3>Datos del Conductor</h3>";
-                        echo "<p><strong>Id Conductor Asociado:</strong> " . htmlspecialchars($id_conductor_vehiculo) . "</p>";
-                        echo "<p><strong>Nombre:</strong> " . htmlspecialchars($nombre_conductor) . "</p>";
-                        echo "<p><strong>Teléfono:</strong> " . htmlspecialchars($telefono_conductor) . "</p>";
+                        echo "<strong>Datos del Conductor</strong>";
+                            echo "<div class='col-6'><div class='panellabel'><p><strong>Identificación:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><p><strong>Nombre:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($id_conductor_vehiculo) . "</div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" .htmlspecialchars($nombre_conductor) .  "</div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><strong>Telefono:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panellabel'><strong>Correo:</strong></p></div></div>";
+                            echo "<div class='col-6'><div class='panelinput'>" . htmlspecialchars($telefono_conductor) . "</div></div>";
+                            echo "<div class='col-6'><div class='panelinput texto-azul'>" . htmlspecialchars($correo_conductor) . "</div></div>";
 
-                        $carpeta_fotos = "../../../Soportes/Vehiculo/" . $placa_mayuscula . "/";
-                        //$nombre_foto =  "FotoFrente.JPG";
-                        $nombre_fotoLateral = "FotoLateral.png";
-
-                        if (empty($nombre_foto)) {
-                            $nombre_foto = "default.jpg";
-                        }
-
-                        $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
-                        $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
-                        ?>
+                            $carpeta_fotos = "../../../Soportes/Vehiculo/" . $placa_mayuscula . "/";
+                            //$nombre_foto =  "FotoFrente.JPG";
+                            $nombre_fotoLateral = "FotoLateral.png";
+                            
+                            if (empty($nombre_foto)) {
+                                $nombre_foto = "default.jpg";
+                                }
+                                
+                                $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
+                                $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+                                ?>
+                                </div>
                     </div>
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-6 panelinferiorboton ">
@@ -159,9 +168,7 @@
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
                     <?php
-                    echo "Ubicación del conductor
-                     <h3>" . htmlspecialchars($area) . "</h3>
-                     <h3>" . htmlspecialchars($piso) . "</h3>"
+                    echo "<strong>"."Ubicación: ". htmlspecialchars($area) ." (". htmlspecialchars($piso) .")"."</strong>"
                         ?>
                 </div>
                 <?php
