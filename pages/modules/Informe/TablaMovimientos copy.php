@@ -40,11 +40,8 @@
                 <th>Oid</th>
                 <th>Fecha Entrada</th>
                 <th>Fecha Salida</th>
-                <th>Medio</th>
-                <th>Placa</th>
-                <th>IdConductor</th>
-                <th>Nombre</th>
-
+                <th>Id Vehiculo</th>
+                <th>Id Conductor</th>
             </tr>
         </thead>
         <tbody>
@@ -75,8 +72,8 @@
                     echo "<td>" . $fila["Oid"] . "</td>";
                     echo "<td>" . $fila["fecha_entrada"] . "</td>";
                     echo "<td>" . $fila["fecha_salida"] . "</td>";
-                    echo "<td>" . $fila["tipoVehiculo"] . "</td>"; // Nuevo dato en la tabla
                     echo "<td>" . $fila["IdVehiculo"] . "</td>"; // Esta es la placa
+                    echo "<td>" . $fila["tipoVehiculo"] . "</td>"; // Nuevo dato en la tabla
                     echo "<td>" . $fila["IdConductor"] . "</td>";
                     echo "<td>" . $fila["nombreConductor"] . "</td>"; // Nuevo dato en la tabla
                     echo "</tr>";

@@ -50,7 +50,7 @@ if ($stmt) {
 
         echo "<script>
     alert('Datos Guardados con éxito. ');
-    window.location.href = '../../../index.html';
+    window.location.href = '../../../index.php';
 </script>";
         exit(); // Detiene el script PHP correctamente
     } else {

@@ -1,3 +1,16 @@
+<?php
+// 1. Buscamos el archivo de texto en la misma carpeta
+$archivo_ip = "../../enlace.txt";
+
+if (file_exists($archivo_ip)) {
+    // Lee el archivo y trim() limpia espacios o saltos de línea invisibles
+    $servidor = trim(file_get_contents($archivo_ip));
+} else {
+    // IP de respaldo por si el archivo .txt no existe o se borra
+    $servidor = "localhost";
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,9 +27,51 @@
 
 <body>
 
+    <?php
+    // 1. Conexión a la base de datos
+    $pdo = new PDO('mysql:host=localhost;dbname=parqueadero', 'root', '');
+
+    // 2. Consulta SQL con INNER JOIN para validar el tipo de vehículo por su placa
+    $sql = "SELECT COUNT(*) 
+        FROM movimiento m
+        INNER JOIN vehiculo v ON m.IdVehiculo = v.placa
+        WHERE m.fecha_salida IS NULL 
+          AND v.Medio = 'MOTOCICLETA'";
+
+    $stmt = $pdo->query($sql);
+
+    // 3. Obtener el resultado
+    $totalMotos = $stmt->fetchColumn();
+
+    // 4. Realizar la operación de diferencia (32 - total)
+    $diferencia = (32 - $totalMotos);
+
+
+
+    // 2. Consulta SQL con INNER JOIN para validar el tipo de vehículo por su placa
+    $sql = "SELECT COUNT(*) 
+        FROM movimiento m
+        INNER JOIN vehiculo v ON m.IdVehiculo = v.placa
+        WHERE m.fecha_salida IS NULL 
+       AND (v.Medio = 'AUTOMÓVIL' OR v.Medio = 'CAMIONETA')";
+
+    $stmt = $pdo->query($sql);
+
+    // 3. Obtener el resultado
+    $totalVehiculos = $stmt->fetchColumn();
+
+    // 4. Realizar la operación de diferencia (32 - total)
+    $diferenciaVehiculos = (71 - $totalVehiculos);
+
+    // Ejemplo para mostrar los resultados en tu diseño:
+    // echo "Motos adentro: " . $totalMotos . "<br>";
+    //echo "Cupos disponibles: " . $diferencia;
+    ?>
+
+
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-         <a href="../../pages/modules/informe/TablaConductores.php">Conductores</a>
+        <a href="../../pages/modules/informe/TablaConductores.php">Conductores</a>
         <a href="../../pages/modules/informe/TablaMovimientos.php">Movimientos</a>
         <a href="#">Services</a>
         <a href="#">Clients</a>
@@ -66,6 +121,10 @@
                         fortalecimiento de la protección de los datos. Asimismo, se busca promover una cultura de
                         ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
                         buenas prácticas en el manejo de la información.</div> -->
+                    <?php
+                    echo "<div class='campo'><h3><strong>Motos (" . $totalMotos . "/".$diferencia.")</strong></h3></div>";
+                    echo "<div class='campo'><h3><strong>Vehiculos (" . $totalVehiculos . "/".$diferenciaVehiculos.")</strong></h3></div>";
+                    ?>
                     <br>
                     <a href="../../pages/modules/vehiculo/Vehiculo.html"><button type="button"
                             class="btn btn-secondary text-white">Registrar</button></a>

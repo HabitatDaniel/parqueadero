@@ -1,3 +1,16 @@
+<?php
+// 1. Buscamos el archivo de texto en la misma carpeta
+$archivo_ip = "../../enlace.txt";
+
+if (file_exists($archivo_ip)) {
+    // Lee el archivo y trim() limpia espacios o saltos de línea invisibles
+    $servidor = trim(file_get_contents($archivo_ip));
+} else {
+    // IP de respaldo por si el archivo .txt no existe o se borra
+    $servidor = "localhost";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,8 +43,10 @@
                 <!-- </nav>  -->
             </div>
             <div class="col-12 col-sm-2 col-md-22 col-lg-2 login ">
-                 <a class="text-white" href=" http://192.168.2.7/parqueadero/pages/company/login.html"><button type="button" class="btn btn-success " href="pages/company/login.html">
-                   Login </button>
+            <?php
+                echo "<a class='text-white' href=' http://".$servidor."/parqueadero/pages/company/login.html'><button type='button' class='btn btn-success ' href='pages/company/login.html'>"
+                 ?>
+                 Login </button>
                    </a>
             </div>
         </nav>

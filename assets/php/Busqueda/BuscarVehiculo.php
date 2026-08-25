@@ -170,9 +170,12 @@
 
                     <script>
                         function enviarDatos() {
+                            // 1. Traemos de forma segura las variables desde PHP hacia JavaScript
                             const placaVehiculo = <?php echo json_encode($_GET['placa'] ?? ''); ?>;
-                            // Redireccionamos pasando la placa en la URL a nuestro nuevo archivo PHP
-                            window.location.href = "../Registro/Movimiento.php?placa=" + encodeURIComponent(placaVehiculo);
+                            const idConductor = <?php echo json_encode($id_conductor_vehiculo ?? ''); ?>;
+
+                            // 2. Construimos la URL usando JavaScript puro y comillas invertidas (Template Literals)
+                            window.location.href = `../Registro/Movimiento.php?placa=${encodeURIComponent(placaVehiculo)}&idConductor=${encodeURIComponent(idConductor)}`;
                         }
 
                     </script>

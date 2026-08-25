@@ -20,6 +20,7 @@ if ($conexion->connect_error) {
 }
 
 $placa = $_GET['placa'] ?? $_POST['placa'] ?? '';
+$IdConductor = $_GET['idConductor'] ?? $_POST['idConductor'] ?? '';
 
 // Estilos CSS embebidos para asegurar el diseño responsivo y la estética moderna
 echo "
@@ -132,6 +133,7 @@ if (!empty($placa)) {
   $resultado_buscar = $stmt_buscar->get_result();
   $movimiento_activo = $resultado_buscar->fetch_assoc();
   $stmt_buscar->close();
+  $idconductor= $IdConductor;
 
   $proceso_exitoso = false;
   $html_notificacion = "";
@@ -147,7 +149,7 @@ if (!empty($placa)) {
               <a href='../MenuBasico.php' class='btn-regresar'>Volver al Menú</a>
           </div>";
       } else {
-          $sql_insertar = "INSERT INTO movimiento (IdVehiculo, fecha_entrada) VALUES (?, NOW())";
+          $sql_insertar = "INSERT INTO movimiento (IdVehiculo, fecha_entrada,IdConductor) VALUES (?, NOW(),".$idconductor.")";
           $stmt_accion = $conexion->prepare($sql_insertar);
           $stmt_accion->bind_param("s", $placa);
           
