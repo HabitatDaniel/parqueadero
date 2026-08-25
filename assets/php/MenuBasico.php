@@ -99,7 +99,7 @@ if (file_exists($archivo_ip)) {
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             </div>
             <div class="col-12 col-sd-12 col-md-12 col-lg-8 ">
-                <H1>Proceso Ingresos - Activos Fijos </h1>
+                <H1 style="color:white;" >REGISTRO PARQUEADERO</h1>
             </div>
             <div class=" col-12 col-sd-12 col-md-12 col-lg-2">
                 <a class="text-red  " href="../../assets/php/Otros/logout.php">
@@ -122,8 +122,8 @@ if (file_exists($archivo_ip)) {
                         ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
                         buenas prácticas en el manejo de la información.</div> -->
                     <?php
-                    echo "<div class='campo'><h3><strong>Motos (" . $totalMotos . "/".$diferencia.")</strong></h3></div>";
-                    echo "<div class='campo'><h3><strong>Vehiculos (" . $totalVehiculos . "/".$diferenciaVehiculos.")</strong></h3></div>";
+                    echo "<h3><strong>Motos (" . $totalMotos . "/".$diferencia.")</strong></h3>";
+                    echo "<h3><strong>Vehiculos (" . $totalVehiculos . "/".$diferenciaVehiculos.")</strong></h3>";
                     ?>
                     <br>
                     <a href="../../pages/modules/vehiculo/Vehiculo.html"><button type="button"

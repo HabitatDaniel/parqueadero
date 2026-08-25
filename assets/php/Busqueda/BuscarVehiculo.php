@@ -182,22 +182,40 @@
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
                     <?php
-                    echo "<strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong>"
-                        ?>
+                    echo "<div><strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong>";
+                    echo "<label for='piso'>Elige una Fruta:</label>
+                    <select id='piso' name='piso'>
+                        <option value='1 Piso'>1 Piso</option>
+                        <option value='2 Piso'>2 Piso</option>
+                        <option value='3 Piso'>3 Piso</option>
+                        <option value='4 Piso'>4 Piso</option>
+                        <option value='5 Piso'>5 Piso</option>
+                        <option value='6 Piso'>6 Piso</option>
+                        <option value='7 Piso'>7 Piso</option>
+                        <option value='8 Piso'>8 Piso</option>
+                        <option value='9 Piso'>9 Piso</option>
+                        <option value='10 Piso'>10 Piso</option>
+                        <option value='11 Piso'>11 Piso</option>
+                        <option value='12 Piso'>12 Piso</option>
+                        <option value='13 Piso'>13 Piso</option>
+                        <option value='14 Piso'>14 Piso</option>
+                        <option value='15 Piso'>15 Piso</option>
+                    </select></div>";
+                    
+                       ?>
                 </div>
                 <?php
                 } else {
                     echo "<p style='color: red;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p>";
+                
                 }
 
                 $stmt->close();
             } else {
                 echo "<p style='color: orange;'>Por favor, introduzca una placa válida en el formulario.</p>";
-            }
-
+}
             $conexion->close();
             ?>
-
     </div>
     </div>
     </div>
