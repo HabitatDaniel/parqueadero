@@ -10,6 +10,14 @@ body {
     align-items: center;
     text-align: center;
 }
+.encabezado{
+    /* background-color: #00947F; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    
+}
 .sidenav {
   height: 100%;
   width: 0;
@@ -69,11 +77,15 @@ BODY {
     #margin: auto; 
 } 
 #cabecera1{ 
-    background-color: #d0d0ff; 
+    /* background-color: #d0d0ff;  */
+    background-color: white; 
     color: #333300; 
     font-size:12pt; 
+    height: 100px;
     font-weight: bold; 
-    padding: 3 3 3 10px; 
+    padding: 3 3 3 10px;
+    flex-direction: row; 
+    display: flex;
 } 
 #cuerpo1{ 
    # margin: 10 0 10 0px; 

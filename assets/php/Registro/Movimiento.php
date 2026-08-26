@@ -21,6 +21,8 @@ if ($conexion->connect_error) {
 
 $placa = $_GET['placa'] ?? $_POST['placa'] ?? '';
 $IdConductor = $_GET['idConductor'] ?? $_POST['idConductor'] ?? '';
+$limite = $_GET['idlimite'] ?? $_POST['idlimite'] ?? '';
+$idmedio = $_GET['medio'] ?? $_POST['medio'] ?? '';
 
 // Estilos CSS embebidos para asegurar el diseño responsivo y la estética moderna
 echo "
@@ -119,11 +121,23 @@ echo "
 
 if (!empty($placa)) {
 
-  // PASO A: Contar vehículos activos
-  $sql_contar = "SELECT COUNT(*) as total_adentro FROM movimiento WHERE fecha_salida IS NULL";
-  $resultado_contar = $conexion->query($sql_contar);
+   // PASO A: Contar vehículos activos con lógica condicional según el medio
+  if (trim(strtolower($idmedio)) === 'motocicleta') {
+      // Si es motocicleta, solo contamos las motocicletas
+      $sql_contar = "SELECT COUNT(*) as total_adentro FROM movimiento WHERE fecha_salida IS NULL AND Medio = ?";
+      $stmt_contar = $conexion->prepare($sql_contar);
+      $stmt_contar->bind_param("s", $idmedio);
+  } else {
+      // Si es automóvil, camioneta (o cualquier otro), contamos ambos grupos juntos
+      $sql_contar = "SELECT COUNT(*) as total_adentro FROM movimiento WHERE fecha_salida IS NULL AND Medio IN ('AUTOMÓVIL', 'CAMIONETA')";
+      $stmt_contar = $conexion->prepare($sql_contar);
+  }
+
+  $stmt_contar->execute();
+  $resultado_contar = $stmt_contar->get_result();
   $fila_contar = $resultado_contar->fetch_assoc();
   $total_adentro = (int)$fila_contar['total_adentro'];
+  $stmt_contar->close();
 
   // PASO B: Buscar si la placa ya está adentro
   $sql_buscar = "SELECT * FROM movimiento WHERE IdVehiculo = ? AND fecha_salida IS NULL LIMIT 1";
@@ -133,29 +147,31 @@ if (!empty($placa)) {
   $resultado_buscar = $stmt_buscar->get_result();
   $movimiento_activo = $resultado_buscar->fetch_assoc();
   $stmt_buscar->close();
-  $idconductor= $IdConductor;
+  $idconductor = $IdConductor;
 
   $proceso_exitoso = false;
   $html_notificacion = "";
 
   if (!$movimiento_activo) {
       
-      if ($total_adentro >= 32) {
+      if ($total_adentro >= $limite) {
           $html_notificacion = "
           <div class='card-notificacion card-danger'>
               <div class='icon-wrapper icon-danger'>❌</div>
               <div class='titulo-alerta'>Capacidad Máxima</div>
-              <div class='texto-alerta'>No se puede registrar el ingreso. El parqueadero ya alcanzó el límite estricto de 32 vehículos adentro.</div>
+              <div class='texto-alerta'>No se puede registrar el ingreso. El parqueadero ya alcanzó el límite estricto de ".$limite." vehículos adentro.</div>
               <a href='../MenuBasico.php' class='btn-regresar'>Volver al Menú</a>
           </div>";
       } else {
-          $sql_insertar = "INSERT INTO movimiento (IdVehiculo, fecha_entrada,IdConductor) VALUES (?, NOW(),".$idconductor.")";
+          // Corrección: Marcadores '?' para evitar roturas por texto e Inyección SQL
+          $sql_insertar = "INSERT INTO movimiento (IdVehiculo, fecha_entrada, Medio, IdConductor) VALUES (?, NOW(), ?, ?)";
           $stmt_accion = $conexion->prepare($sql_insertar);
-          $stmt_accion->bind_param("s", $placa);
+          // Se asume que Medio e IdConductor son strings ("sss"). Cambiar a "ssi" si el idConductor es numérico en la BD
+          $stmt_accion->bind_param("sss", $placa, $idmedio, $idconductor);
           
           if ($stmt_accion->execute()) {
               $proceso_exitoso = true;
-              $cupo_restante = 32 - ($total_adentro + 1);
+              $cupo_restante = $limite - ($total_adentro + 1);
               $html_notificacion = "
               <div class='card-notificacion card-success'>
                   <div class='icon-wrapper icon-success'>🚨</div>
@@ -210,7 +226,7 @@ if (!empty($placa)) {
     echo '<meta http-equiv="refresh" content="2;url=../MenuBasico.php">';
     ?>
     <script> 
-      let segundos = 10;
+      let segundos = 2; // Ajustado a 2 segundos para coincidir con la etiqueta meta y el texto del HTML
       const elementoContador = document.getElementById('contador');
 
       const intervalo = setInterval(function () {
@@ -223,24 +239,7 @@ if (!empty($placa)) {
         }
       }, 1000);
     </script>
-    <script>
-      window.history.pushState(null, null, window.location.href);
-      window.onpopstate = function () {
-        window.history.go(1);
-      };
-    </script>
     <?php
   }
-
-} else {
-  echo "
-  <div class='card-notificacion card-warning'>
-      <div class='icon-wrapper icon-warning'>❓</div>
-      <div class='titulo-alerta'>Datos Incompletos</div>
-      <div class='texto-alerta'>No se detectó el parámetro de la placa para realizar la evaluación del estado en el sistema.</div>
-      <a href='../MenuBasico.php' class='btn-regresar'>Volver al Menú</a>
-  </div>";
 }
-
-$conexion->close();
 ?>

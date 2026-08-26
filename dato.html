@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de MsgDialog HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        dialog {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón para abrir el diálogo -->
+    <button id="abrirBtn">Mostrar Mensaje</button>
+
+    <!-- La etiqueta nativa dialog -->
+    <dialog id="miDialogo">
+        <p>¡Hola! Este es un cuadro de diálogo nativo en HTML.</p>
+        <button id="cerrarBtn">Aceptar</button>
+            <label for='piso'>Elige una Fruta:</label>
+                    <select id='piso' name='piso'>
+                        <option value='1 Piso'>1 Piso</option>
+                        <option value='2 Piso'>2 Piso</option>
+                        <option value='3 Piso'>3 Piso</option>
+                        <option value='4 Piso'>4 Piso</option>
+                        <option value='5 Piso'>5 Piso</option>
+                        <option value='6 Piso'>6 Piso</option>
+                        <option value='7 Piso'>7 Piso</option>
+                        <option value='8 Piso'>8 Piso</option>
+                        <option value='9 Piso'>9 Piso</option>
+                        <option value='10 Piso'>10 Piso</option>
+                        <option value='11 Piso'>11 Piso</option>
+                        <option value='12 Piso'>12 Piso</option>
+                        <option value='13 Piso'>13 Piso</option>
+                        <option value='14 Piso'>14 Piso</option>
+                        <option value='15 Piso'>15 Piso</option>
+                    </select></div>;
+    </dialog>
+
+    <script>
+        const dialog = document.getElementById('miDialogo');
+        const abrirBtn = document.getElementById('abrirBtn');
+        const cerrarBtn = document.getElementById('cerrarBtn');
+
+        // Abrir el diálogo en modo modal
+        abrirBtn.addEventListener('click', () => {
+            dialog.showModal();
+        });
+
+        // Cerrar el diálogo
+        cerrarBtn.addEventListener('click', () => {
+            dialog.close();
+        });
+    </script>
+
+</body>
+</html>

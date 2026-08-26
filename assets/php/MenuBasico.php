@@ -66,9 +66,39 @@ if (file_exists($archivo_ip)) {
     // Ejemplo para mostrar los resultados en tu diseño:
     // echo "Motos adentro: " . $totalMotos . "<br>";
     //echo "Cupos disponibles: " . $diferencia;
+    
+    // 2. Consulta SQL con INNER JOIN para validar el tipo de vehículo por su placa
+    $sql = "SELECT COUNT(*) 
+        FROM movimiento m
+        INNER JOIN bicicleta v ON m.IdVehiculo = v.Codigo_Interno
+        WHERE m.fecha_salida IS NULL";
+    // AND v.Medio = 'BICICLETA'"  ;
+    
+    $stmt = $pdo->query($sql);
+    $cupoBici = 20;
+    // 3. Obtener el resultado
+    $totalBicis = $stmt->fetchColumn();
+
+    // 4. Realizar la operación de diferencia (32 - total)
+    $diferenciaBici = ($cupoBici - $totalBicis);
+
+    // 2. Consulta SQL con INNER JOIN para validar el tipo de vehículo por su placa
+    $sql = "SELECT COUNT(*) 
+        FROM movimiento m
+        INNER JOIN patineta v ON m.IdVehiculo = v.Codigo_Interno
+        WHERE m.fecha_salida IS NULL";
+    // AND v.Medio = 'BICICLETA'"  ;
+    
+    $stmt = $pdo->query($sql);
+    $cupoPatinetas = 20;
+    // 3. Obtener el resultado
+    $totalPatinetas = $stmt->fetchColumn();
+
+    // 4. Realizar la operación de diferencia (32 - total)
+    $diferenciaPatineta = ($cupoPatinetas - $totalPatinetas);
+
+
     ?>
-
-
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="../../pages/modules/informe/TablaConductores.php">Conductores</a>
@@ -83,16 +113,21 @@ if (file_exists($archivo_ip)) {
     <div class="contenedor container-fluid-md ">
 
         <div class="inicio row col-12 col-sd-12 col-md-12 col-lg-12 border">
-            <div id="cabecera1">
+            <div id="cabecera1" class="row col-12 col-sm-12 col-md-12 col-lg-12">
 
                 <?php
                 session_start();
                 if (!isset($_SESSION['usuario'])) {
                     header("Location: ../../index.html"); // Volver si no hay sesión
                 }
-                echo "Bienvenido, user" . $_SESSION['usuario']; ?>
+               // echo " <div class='col-12 col-sd-12 col-md-12 col-lg-6'>";
+                echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-6  logo'>
+            <img src='../img/logo_SDHT_n.png' class='imagen' alt='Imagen Portafolio' />
+        </div>";
+                echo "<div class='col-12 col-sm-12 col-md-12 col-lg-6 encabezado'>Bienvenido, Usuario(" . $_SESSION['usuario'] . ")</diV>";
+              //  echo "</div>";
+                ?>
                 <!-- Opción 1: Enlace a script de cierre (PHP)  <a href="#"><button onclick="cerrarSesion()">Cerrar Sesión</button></a> -->
-                </h1>
             </div>
 
             <div class="col-12 col-sd-12 col-md-12 col-lg-2 ">
@@ -123,8 +158,8 @@ if (file_exists($archivo_ip)) {
                         buenas prácticas en el manejo de la información.</div> -->
                     <?php
                     echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12 datodos'  >";
-                    echo "<div class='col-6 col-sm-6 col-md-6 col-lg-6 datotres'><h3><strong>".$cupoMoto." Motos<br><h3>(<a style='color:red;'>" . $totalMotos . "</a>/<a style='color:green;'>" . $diferencia . "</a>)</strong></h3></div>";
-                    echo "<div class='col-6 col-sm-6 col-md-6 col-lg-6 datotres' style='background-color:#6ECEAD; '><h3><strong>".$cupoVehiculo." Vehiculos<br>(<a style='color:red;'>" . $totalVehiculos . "</a>/<a style='color:green;'>" . $diferenciaVehiculos . "</a>)</strong></h3></div>";
+                    echo "<div class='row col-6 col-sm-6 col-md-6 col-lg-6 datotres'>" . $cupoMoto . " Motos<br><h3>(<a style='color:red;'>" . $totalMotos . "</a>/<a style='color:green;'>" . $diferencia . "</a>)</div>";
+                    echo "<div class='row col-6 col-sm-6 col-md-6 col-lg-6 datotres''>" . $cupoVehiculo . " Vehiculos<br><h3>(<a style='color:red;'>" . $totalVehiculos . "</a>/<a style='color:green;'>" . $diferenciaVehiculos . "</a>)</div>";
                     echo "</div>";
                     ?>
                     <br>
@@ -134,26 +169,36 @@ if (file_exists($archivo_ip)) {
             </div>
 
             <div class="col-12 col-sm-12 col-md-6 col-lg-4  port-col ">
-                <div class="col row-4 dato"><a>BICICLETAS</a><br>
+                <div class="col row-4 dato"><strong>BICICLETAS</strong><br>
                     <img src="../../assets/img/bicicleta.png" class="img-fluid border" alt="Imagen Portafolio" />
                     <!-- <div class="campo">Por esta razón, resulta necesario identificar los principales riesgos de
                         seguridad de la información presentes en UNIMINUTO y proponer medidas orientadas al
                         fortalecimiento de la protección de los datos. Asimismo, se busca promover una cultura de
                         ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
                         buenas prácticas en el manejo de la información.</div> -->
+                    <?php
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12 datodos'  >";
+                    echo "<div class='row col-6 col-sm-6 col-md-6 col-lg-6 datotres'>" . $cupoBici . " Bicicletas<br><h3>(<a style='color:red;'>" . $totalBicis . "</a>/<a style='color:green;'>" . $diferenciaBici . "</a>)</div>";
+                    echo "</div>";
+                    ?>
                     <br>
                     <a href="../../pages/modules/vehiculo/bicicleta.html"><button type="button"
                             class="btn btn-secondary text-white">Registrar</button></a>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-4  port-col  ">
-                <div class="col row-4 dato"><a>PATINETAS</a><br>
+                <div class="col row-4 dato"><strong>PATINETAS</strong><br>
                     <img src="../../assets/img/portafolio-3.png" class="img-fluid border" alt="Imagen Portafolio" />
                     <!-- <div class="campo">Por esta razón, resulta necesario identificar los principales riesgos de
                         seguridad de la información presentes en UNIMINUTO y proponer medidas orientadas al
                         fortalecimiento de la protección de los datos. Asimismo, se busca promover una cultura de
                         ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
                         buenas prácticas en el manejo de la información.</div> -->
+                    <?php
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12 datodos'  >";
+                    echo "<div class='row col-6 col-sm-6 col-md-6 col-lg-6 datotres'>" . $cupoPatinetas . " Patinetas<br><h3>(<a style='color:red;'>" . $totalPatinetas . "</a>/<a style='color:green;'>" . $diferenciaPatineta . "</a>)</div>";
+                    echo "</div>";
+                    ?>
                     <br>
                     <a href="../../pages/modules/vehiculo/patineta.html"><button type="button"
                             class="btn btn-secondary text-white">Registrar</button></a>

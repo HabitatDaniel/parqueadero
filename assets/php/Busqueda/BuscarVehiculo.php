@@ -80,12 +80,14 @@
                         default => 'btn-secondary', // Clase por si viene otro valor
                     };
 
+
+
                     echo "<h2>Secretaría del Habitat</h2>";
                     echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12' >";
                     echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6'><strong>Medio:</strong> " . htmlspecialchars($vehiculo['Medio']) . "</div>";
                     echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6 tipoconductor'><button class='btn " . $claseBtn . "'>" . htmlspecialchars($conductor['Vinculacion']) . "</button></div>";
                     echo "</div>";
-                        ?>
+                    ?>
                 </div>
                 <div class="col-12 col-sm-2 col-md-12 col-lg-6 panelcentral">
                     <?php
@@ -166,6 +168,14 @@
 
                             $ruta_completa_foto = $carpeta_fotos . $nombre_foto;
                             $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+
+
+                            $limite = match (mb_strtolower(htmlspecialchars($vehiculo['Medio']), 'UTF-8')) {
+                                'motocicleta' => 32,
+                                'automóvil' => 70,
+                                'camioneta' => 70,
+                                default => 100, // Clase por si viene otro valor
+                            };
                             ?>
                         </div>
                     </div>
@@ -182,35 +192,18 @@
                             // 1. Traemos de forma segura las variables desde PHP hacia JavaScript
                             const placaVehiculo = <?php echo json_encode($_GET['placa'] ?? ''); ?>;
                             const idConductor = <?php echo json_encode($id_conductor_vehiculo ?? ''); ?>;
-
+                            const idlimite = <?php echo json_encode($limite ?? ''); ?>;
+                            const mediodato = <?php echo json_encode($vehiculo['Medio'] ?? ''); ?>;
                             // 2. Construimos la URL usando JavaScript puro y comillas invertidas (Template Literals)
-                            window.location.href = `../Registro/Movimiento.php?placa=${encodeURIComponent(placaVehiculo)}&idConductor=${encodeURIComponent(idConductor)}`;
+                            window.location.href = `../Registro/Movimiento.php?placa=${encodeURIComponent(placaVehiculo)}&idConductor=${encodeURIComponent(idConductor)}&medio=${encodeURIComponent(mediodato)}&idlimite=${encodeURIComponent(idlimite)}`;
                         }
 
                     </script>
                 </div>
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
                     <?php
-                    echo "<div><strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong>";
-                    echo "<label for='piso'>Elige una Fruta:</label>
-                    <select id='piso' name='piso'>
-                        <option value='1 Piso'>1 Piso</option>
-                        <option value='2 Piso'>2 Piso</option>
-                        <option value='3 Piso'>3 Piso</option>
-                        <option value='4 Piso'>4 Piso</option>
-                        <option value='5 Piso'>5 Piso</option>
-                        <option value='6 Piso'>6 Piso</option>
-                        <option value='7 Piso'>7 Piso</option>
-                        <option value='8 Piso'>8 Piso</option>
-                        <option value='9 Piso'>9 Piso</option>
-                        <option value='10 Piso'>10 Piso</option>
-                        <option value='11 Piso'>11 Piso</option>
-                        <option value='12 Piso'>12 Piso</option>
-                        <option value='13 Piso'>13 Piso</option>
-                        <option value='14 Piso'>14 Piso</option>
-                        <option value='15 Piso'>15 Piso</option>
-                    </select></div>";
-
+                    echo "<div><strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong></div>";
+                  
                     ?>
                 </div>
                 <?php

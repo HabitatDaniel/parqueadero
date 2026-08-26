@@ -35,7 +35,7 @@
                 $placa_buscar = strtoupper(trim($_GET['placa']));
 
                 // 1. PRIMERA CONSULTA: Buscar el vehículo de forma limpia
-                $sql = "SELECT * FROM bicicleta WHERE idConductor = ?";
+                $sql = "SELECT * FROM patineta WHERE idConductor = ?";
                 $stmt = $conexion->prepare($sql);
                 $stmt->bind_param("s", $placa_buscar);
                 $stmt->execute();
@@ -83,7 +83,7 @@
 
                     echo "<h2>Secretaría del Habitat</h2>";
                     echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12' >";
-                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6'><strong>Medio:</strong>Bicicleta</div>";
+                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6'><strong>Medio:</strong>Patineta</div>";
                     echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6 tipoconductor'><button class='btn " . $claseBtn . "'>" . htmlspecialchars($conductor['Vinculacion']) . "</button></div>";
                     echo "</div>";
                         ?>
@@ -101,7 +101,7 @@
                     //echo "<p><strong>Nombre:</strong> " . htmlspecialchars($nombre_conductor) . "</p>";
                     //echo "<p><strong>Teléfono:</strong> " . htmlspecialchars($telefono_conductor) . "</p>";
             
-                    $carpeta_fotos = "../../../Soportes/Bicicleta/" . $placa_mayuscula . "/";
+                    $carpeta_fotos = "../../../Soportes/Patineta/" . $placa_mayuscula . "/";
                     //$nombre_foto =  "FotoFrente.JPG";
                     $nombre_fotoLateral = "FotoLateral.png";
 
@@ -111,7 +111,7 @@
                     // 2. Verificar si el archivo NO existe en el servidor
                     if (!file_exists($ruta_completa_fotoLateral)) {
                         $carpeta_fotos = "../../../assets/img/";
-                        $nombre_fotoLateral = "bicicleta.png";
+                        $nombre_fotoLateral = "portafolio-3.png";
                         // Reasignar la ruta por defecto
                         $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
                     }
@@ -160,7 +160,7 @@
                             echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-7'><div class='panelinput'><a href='https://api.whatsapp.com/send?phone=57" . htmlspecialchars($telefono_conductor) . "&text=hola,%20qu%C3%A9%20tal?%20Quisiera%20informaci%C3%B3n%20respecto%20a%20los%20productos%20ofrecidos%20en%20especifico:' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($telefono_conductor) . "</a></div></div>";
                             echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-8'><div class='panelinput texto-azul'><a href='mailto:" . htmlspecialchars($correo_conductor) . "' target='_blank' rel='noopener noreferrer'>" . htmlspecialchars($correo_conductor) . "</a></div></div>";
                             //echo "</div></div>";
-                            $carpeta_fotos = "../../../Soportes/Bicicleta/" . $placa_mayuscula . "/";
+                            $carpeta_fotos = "../../../Soportes/Patineta/" . $placa_mayuscula . "/";
                             //$nombre_foto =  "FotoFrente.JPG";
                             $nombre_fotoLateral = "FotoLateral.png";
 

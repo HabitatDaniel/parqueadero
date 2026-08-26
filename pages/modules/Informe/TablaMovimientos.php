@@ -59,12 +59,12 @@
 
             // 2. Consulta SQL con JOINs para traer los datos relacionados
 // Nota: Ajusta 'nombre' y 'tipo' si tus columnas se llaman diferente en sus tablas
-            $sql = "SELECT m.Oid, m.fecha_entrada, m.fecha_salida, m.IdVehiculo, m.IdConductor, 
+            $sql = "SELECT m.Oid, m.fecha_entrada, m.fecha_salida,m.Medio, m.IdVehiculo, m.IdConductor, 
                c.Nombre AS nombreConductor, 
-               v.Medio AS tipoVehiculo 
+               m.Medio AS tipoVehiculo 
         FROM movimiento m
-        INNER JOIN conductor c ON m.IdConductor = c.IdConductor
-        INNER JOIN vehiculo v ON m.IdVehiculo = v.Placa";
+        INNER JOIN conductor c ON m.IdConductor = c.IdConductor";
+        //INNER JOIN vehiculo v ON m.IdVehiculo = v.Placa";
 
             $resultado = mysqli_query($conexion, $sql);
 
