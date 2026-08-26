@@ -72,8 +72,21 @@
 
                     // 3. MOSTRAR DATOS DEL VEHÍCULO
             
+                     // 3. MOSTRAR DATOS DEL VEHÍCULO
+                    // 1. Asignamos la clase según el tipo de vinculación
+                    $claseBtn = match (strtolower($conductor['Vinculacion'])) {
+                        'contratista' => 'btn-warning',
+                        'funcionario' => 'btn-success',
+                        'externo' => 'btn-danger',
+                        default => 'btn-secondary', // Clase por si viene otro valor
+                    };
+
                     echo "<h2>Secretaría del Habitat</h2>";
-                    echo "<p><strong>Medio:</strong> Bicicleta</p>";
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12' >";
+                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6'><strong>Medio:</strong>Bicicleta</div>";
+                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6 tipoconductor'><button class='btn " . $claseBtn . "'>" . htmlspecialchars($conductor['Vinculacion']) . "</button></div>";
+                    echo "</div>";
+                        ?>
 
 
                     ?>

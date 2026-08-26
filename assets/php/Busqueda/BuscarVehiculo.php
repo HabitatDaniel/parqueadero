@@ -66,17 +66,26 @@
                             $correo_conductor = $conductor['Correo'];
                             $piso = $conductor['Piso'];
                             $area = $conductor['Area'];
+                            $vinculo = $conductor['Vinculacion'];
                         }
                         $stmt_cond->close();
                     }
 
                     // 3. MOSTRAR DATOS DEL VEHÍCULO
-            
+                    // 1. Asignamos la clase según el tipo de vinculación
+                    $claseBtn = match (strtolower($conductor['Vinculacion'])) {
+                        'contratista' => 'btn-warning',
+                        'funcionario' => 'btn-success',
+                        'externo' => 'btn-danger',
+                        default => 'btn-secondary', // Clase por si viene otro valor
+                    };
+
                     echo "<h2>Secretaría del Habitat</h2>";
-                    echo "<p><strong>Medio:</strong> " . htmlspecialchars($vehiculo['Medio']) . "</p>";
-
-
-                    ?>
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12' >";
+                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6'><strong>Medio:</strong> " . htmlspecialchars($vehiculo['Medio']) . "</div>";
+                    echo "<div class='col-12 col-sm-6 col-md-12 col-lg-6 tipoconductor'><button class='btn " . $claseBtn . "'>" . htmlspecialchars($conductor['Vinculacion']) . "</button></div>";
+                    echo "</div>";
+                        ?>
                 </div>
                 <div class="col-12 col-sm-2 col-md-12 col-lg-6 panelcentral">
                     <?php
@@ -201,19 +210,19 @@
                         <option value='14 Piso'>14 Piso</option>
                         <option value='15 Piso'>15 Piso</option>
                     </select></div>";
-                    
-                       ?>
+
+                    ?>
                 </div>
                 <?php
                 } else {
                     echo "<p style='color: red;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p>";
-                
+
                 }
 
                 $stmt->close();
             } else {
                 echo "<p style='color: orange;'>Por favor, introduzca una placa válida en el formulario.</p>";
-}
+            }
             $conexion->close();
             ?>
     </div>

@@ -39,12 +39,12 @@ if (file_exists($archivo_ip)) {
           AND v.Medio = 'MOTOCICLETA'";
 
     $stmt = $pdo->query($sql);
-
+    $cupoMoto = 32;
     // 3. Obtener el resultado
     $totalMotos = $stmt->fetchColumn();
 
     // 4. Realizar la operación de diferencia (32 - total)
-    $diferencia = (32 - $totalMotos);
+    $diferencia = ($cupoMoto - $totalMotos);
 
 
 
@@ -59,9 +59,9 @@ if (file_exists($archivo_ip)) {
 
     // 3. Obtener el resultado
     $totalVehiculos = $stmt->fetchColumn();
-
+    $cupoVehiculo = 70;
     // 4. Realizar la operación de diferencia (32 - total)
-    $diferenciaVehiculos = (70 - $totalVehiculos);
+    $diferenciaVehiculos = ($cupoVehiculo - $totalVehiculos);
 
     // Ejemplo para mostrar los resultados en tu diseño:
     // echo "Motos adentro: " . $totalMotos . "<br>";
@@ -99,7 +99,7 @@ if (file_exists($archivo_ip)) {
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
             </div>
             <div class="col-12 col-sd-12 col-md-12 col-lg-8 ">
-                <H1 style="color:white;" >REGISTRO PARQUEADERO</h1>
+                <H1 style="color:white;">REGISTRO PARQUEADERO</h1>
             </div>
             <div class=" col-12 col-sd-12 col-md-12 col-lg-2">
                 <a class="text-red  " href="../../assets/php/Otros/logout.php">
@@ -113,8 +113,8 @@ if (file_exists($archivo_ip)) {
         <div class="titulo row col-12 col-sd-12 col-md-12 col-lg-12 border">PORTAFOLIO</div>
 
         <section id="portafolio" class="row portafolio ">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 port-col ">
-                <div class="col row-4 dato"><a>VEHÍCULOS</a><br>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 port-col">
+                <div class="col row-4 dato"><strong>VEHÍCULOS</strong><br>
                     <img src="../../assets/img/portafolio-1.png" class="img-fluid border" alt="Imagen Portafolio" />
                     <!-- <div class="campo">Por esta razón, resulta necesario identificar los principales riesgos de
                         seguridad de la información presentes en UNIMINUTO y proponer medidas orientadas al
@@ -122,8 +122,10 @@ if (file_exists($archivo_ip)) {
                         ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
                         buenas prácticas en el manejo de la información.</div> -->
                     <?php
-                    echo "<h3><strong>Motos (" . $totalMotos . "/".$diferencia.")</strong></h3>";
-                    echo "<h3><strong>Vehiculos (" . $totalVehiculos . "/".$diferenciaVehiculos.")</strong></h3>";
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12 datodos'  >";
+                    echo "<div class='col-6 col-sm-6 col-md-6 col-lg-6 datotres'><h3><strong>".$cupoMoto." Motos<br><h3>(<a style='color:red;'>" . $totalMotos . "</a>/<a style='color:green;'>" . $diferencia . "</a>)</strong></h3></div>";
+                    echo "<div class='col-6 col-sm-6 col-md-6 col-lg-6 datotres' style='background-color:#6ECEAD; '><h3><strong>".$cupoVehiculo." Vehiculos<br>(<a style='color:red;'>" . $totalVehiculos . "</a>/<a style='color:green;'>" . $diferenciaVehiculos . "</a>)</strong></h3></div>";
+                    echo "</div>";
                     ?>
                     <br>
                     <a href="../../pages/modules/vehiculo/Vehiculo.html"><button type="button"

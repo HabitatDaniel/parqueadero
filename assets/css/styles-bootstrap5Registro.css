@@ -40,7 +40,7 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     color: white;
     width: 90%;
-    height: 100px;
+    height: 120px;
     /* height: auto; Dinámico para evitar cortes */
     min-height: 80px;
     text-align: left;
@@ -162,6 +162,10 @@
     flex-direction: column;
 }
 
+.tipoconductor{
+    text-align: right;
+}
+
 /*TABLET*/
 @media (max-width: 992px) {
     .contenedor {
@@ -239,6 +243,9 @@
         justify-content: center;
         align-items: center;
     }
+     .tipoconductor{
+    text-align: center;
+}
 }
 
 /*CELULARES*/
@@ -311,13 +318,22 @@
     .caja-8 {
         order: 8;
     }
+    .tipoconductor{
+    text-align: center;
+}
 }
 
 /*EXTRA SMALL*/
 @media (max-width: 575.98px) {
     /* Aquí puedes añadir ajustes finos para pantallas muy pequeñas */
+    .panelsuperior{
+        height: 120px;
+    }
     .panelinferior{
         height: 700px;
         /* background-color: orange; */
     }
+    .tipoconductor{
+    text-align: center;
+}
 }
