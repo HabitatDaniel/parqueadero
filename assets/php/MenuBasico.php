@@ -61,7 +61,7 @@ if (file_exists($archivo_ip)) {
     $totalVehiculos = $stmt->fetchColumn();
 
     // 4. Realizar la operación de diferencia (32 - total)
-    $diferenciaVehiculos = (71 - $totalVehiculos);
+    $diferenciaVehiculos = (70 - $totalVehiculos);
 
     // Ejemplo para mostrar los resultados en tu diseño:
     // echo "Motos adentro: " . $totalMotos . "<br>";
