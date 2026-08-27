@@ -203,15 +203,32 @@
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border">
                     <?php
                     echo "<div><strong>" . "Ubicación: " . htmlspecialchars($area) . " (" . htmlspecialchars($piso) . ")" . "</strong></div>";
-                  
+
                     ?>
+
                 </div>
                 <?php
                 } else {
-                    echo "<p style='color: red;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p>";
+                    echo "<div class='col-12 col-sm-12 col-md-12 col-lg-12 panelhooter border ' style='background-color:red;'><p style='color: white;'>No se encontró ningún vehículo registrado con la placa: " . htmlspecialchars($placa_buscar) . "</p></div>";
+                    ?>
+                <script>
+                    let segundos = 2; // Ajustado a 2 segundos para coincidir con la etiqueta meta y el texto del HTML
+                    const elementoContador = document.getElementById('contador');
 
+                    const intervalo = setInterval(function () {
+                        segundos--;
+                        if (elementoContador) elementoContador.textContent = segundos;
+
+                        if (segundos <= 0) {
+                            clearInterval(intervalo);
+                            window.location.replace("../Registro/Vehiculo.php");
+                        }
+                    }, 1000);
+                </script>
+
+
+                <?php
                 }
-
                 $stmt->close();
             } else {
                 echo "<p style='color: orange;'>Por favor, introduzca una placa válida en el formulario.</p>";
