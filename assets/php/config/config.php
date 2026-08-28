@@ -15,7 +15,8 @@ $conexion->set_charset("utf8mb4");
 
 
 function obtenerFoto($carpetaBase, $subcarpeta, $nombreFoto) {
-    $ruta = $carpetaBase . "/" . $subcarpeta . "/" . $nombreFoto;
+    $ruta = $carpetaBase . $subcarpeta . "/" . $nombreFoto;
+  // echo "<script> alert('Datos Guardados con éxito. ".$ruta."');</script>";
     $porDefecto = "../../../assets/img/portafolio-1.png";
     return file_exists($ruta) ? $ruta : $porDefecto;
 }

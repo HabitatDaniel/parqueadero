@@ -71,8 +71,8 @@ $limite = match (mb_strtolower($vehiculo['Medio'], 'UTF-8')) {
 
 // 4. Fotos
 //$fotoVehiculo = obtenerFoto("C:/datos-seguro-sdht/soportes/vehiculo/", $placa_mayuscula, "FotoLateral.png");
-$fotoVehiculo = obtenerFoto("C:/datos-seguro-sdht/soportes/vehiculo/","DFO36I","FotoLateral.png");
-$fotoConductor = obtenerFoto(".C:/datos-seguro-sdht/soportes/conductor/", $id_conductor_vehiculo, "FotoFrente.png");
+$fotoVehiculo = obtenerFoto("../../../datos-seguro-sdht/soportes/vehiculo/","DFO36I","FotoLateral.png");
+//$fotoConductor = obtenerFoto(".C:/datos-seguro-sdht/soportes/conductor/", $id_conductor_vehiculo, "FotoFrente.png");
 
 $stmt->close();
 $conexion->close();
@@ -96,10 +96,13 @@ $conexion->close();
             <div class="col-6 tipoconductor"><button class="btn <?php echo $claseBtn; ?>"><?php echo htmlspecialchars($vinculo); ?></button></div>
         </div>
     </div>
-
     <div class="col-12 col-lg-6 panelcentral">
+    <div><img src="<?php echo htmlspecialchars($fotoVehiculo); ?>" class="imagenprincipal" alt="Vehículo"></div>
+</div>
+    <div class="col-12 col-lg-6 panelinferior">
+        <div class="col-12 col-lg-6 panelinferiorder">
         <div class="row gx-2 text-center">
-            <div><img src="<?php echo htmlspecialchars($fotoVehiculo); ?>" class="imagenprincipal" alt="Vehículo"></div>
+
             <strong>Datos Técnicos</strong>
             <div class="col-6"><div class="panellabel"><strong>Placa:</strong></div></div>
             <div class="col-6"><div class="panellabel"><strong>Tipo:</strong></div></div>
@@ -110,21 +113,20 @@ $conexion->close();
             <div class="col-6"><div class="panelinput"><?php echo htmlspecialchars($vehiculo['Marca']); ?></div></div>
             <div class="col-6"><div class="panelinput"><?php echo htmlspecialchars($vehiculo['Color']); ?></div></div>
         </div>
-    </div>
-
-    <div class="col-12 col-lg-6 panelinferiorder">
-        <div class="row gx-2 text-center">
-            <div><img src="<?php echo htmlspecialchars($fotoConductor); ?>" class="imagenprincipal" alt="Conductor"></div>
-            <strong>Datos del Conductor</strong>
-            <div class="col-6 caja-1"><div class="panellabel"><strong>Identificación:</strong></div></div>
-            <div class="col-6 caja-2"><div class="panellabel"><strong>Nombre:</strong></div></div>
-            <div class="col-6 caja-3"><div class="panelinput"><?php echo htmlspecialchars($id_conductor_vehiculo); ?></div></div>
-            <div class="col-6 caja-4"><div class="panelinput"><?php echo htmlspecialchars($nombre_conductor); ?></div></div>
-            
-            <div class="col-6 caja-5"><div class="panellabel"><strong>Teléfono:</strong></div></div>
-            <div class="col-6 caja-6"><div class="panellabel"><strong>Correo:</strong></div></div>
-            <div class="col-6 caja-7"><div class="panelinput"><a href="https://api.whatsapp.com/send?phone=57<?php echo htmlspecialchars($telefono_conductor); ?>" target="_blank"><?php echo htmlspecialchars($telefono_conductor); ?></a></div></div>
-            <div class="col-6 caja-8"><div class="panelinput texto-azul"><a href="mailto:<?php echo htmlspecialchars($correo_conductor); ?>"><?php echo htmlspecialchars($correo_conductor); ?></a></div></div>
+         </div>
+        <div class="col-12 col-lg-6 panelinferiorder">
+            <div class="row gx-2 text-center">
+                <strong>Datos del Conductor</strong>
+                <div class="col-6 caja-1"><div class="panellabel"><strong>Identificación:</strong></div></div>
+                <div class="col-6 caja-2"><div class="panellabel"><strong>Nombre:</strong></div></div>
+                <div class="col-6 caja-3"><div class="panelinput"><?php echo htmlspecialchars($id_conductor_vehiculo); ?></div></div>
+                <div class="col-6 caja-4"><div class="panelinput"><?php echo htmlspecialchars($nombre_conductor); ?></div></div>
+                
+                <div class="col-6 caja-5"><div class="panellabel"><strong>Teléfono:</strong></div></div>
+                <div class="col-6 caja-6"><div class="panellabel"><strong>Correo:</strong></div></div>
+                <div class="col-6 caja-7"><div class="panelinput"><a href="https://api.whatsapp.com/send?phone=57<?php echo htmlspecialchars($telefono_conductor); ?>" target="_blank"><?php echo htmlspecialchars($telefono_conductor); ?></a></div></div>
+                <div class="col-6 caja-8"><div class="panelinput texto-azul"><a href="mailto:<?php echo htmlspecialchars($correo_conductor); ?>"><?php echo htmlspecialchars($correo_conductor); ?></a></div></div>
+            </div>
         </div>
     </div>
 

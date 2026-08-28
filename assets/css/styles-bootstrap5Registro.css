@@ -71,10 +71,10 @@
 }
 
 .panelinferior {
-    height: 500px;
+    height: 300px;
     /* background-color: red; */
     width: 90%;
-    gap: 20px;
+    gap: 5px;
     display: flex;
     /* Reactivado */
     flex-direction: row;
