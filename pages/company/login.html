@@ -1,5 +1,9 @@
-<?php 
- 1. Cargamos la URL desde tu archivo .txt
+<?php
+session_start();
+if (isset($_SESSION['usuario_id'])) {
+    header("Location: ../../menu.html"); // si ya está logueado, sácalo de aquí
+    exit();
+}
 $url_base = trim(file_get_contents("enlace.txt")); 
 ?>
 <!DOCTYPE html>
@@ -88,14 +92,6 @@ $url_base = trim(file_get_contents("enlace.txt"));
     }
 </script>
 
-    <script type="text/javascript">
-        // Al cargar la página, forzamos un nuevo estado en el historial
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-            // Si el usuario presiona "Atrás", lo enviamos hacia adelante de nuevo
-            history.go(1);
-        };
-    </script>
 
     <!-- <script src="assets/js/scripts.js"></script>  -->
     <!-- Enlace al script en la otra carpeta (js/) -->

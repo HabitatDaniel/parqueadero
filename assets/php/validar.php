@@ -1,69 +1,73 @@
 <?php
-// 1. Buscamos el archivo de texto en la misma carpeta
-$archivo_ip = "../../enlace.txt";
-
-if (file_exists($archivo_ip)) {
-    // Lee el archivo y trim() limpia espacios o saltos de línea invisibles
-    $servidor = trim(file_get_contents($archivo_ip));
-} else {
-    // IP de respaldo por si el archivo .txt no existe o se borra
-    $servidor = "localhost";
-}
-
-
-
 session_start();
 
-$nombre = $_POST['usuario'];
-$clave = $_POST['clave'];
+// 1. Cargar servidor desde txt
+$archivo_ip = "../../enlace.txt";
+$servidor = file_exists($archivo_ip) ? trim(file_get_contents($archivo_ip)) : "localhost";
 
-$conn = new mysqli($servidor, "root", "", "parqueadero");
+$nombre = trim($_POST['usuario'] ?? '');
+$clave = trim($_POST['clave'] ?? '');
 
-
-$consulta = mysqli_query($conn, "SELECT Oid,ccEmpleado,Nombre,Tipo,Clave,CambioClave FROM empleado WHERE ccEmpleado = '$nombre' AND Clave = '$clave' LIMIT 1");
-
-if (!$consulta) {
-
-
-    header("location: index.php");
-    echo mysqli_error($mysqli);
-
-
+if (empty($nombre) || empty($clave)) {
+    header("Location: ../../pages/company/login.php?error=vacio");
+    exit();
 }
 
+$conn = new mysqli($servidor, "root", "", "parqueadero");
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
+$conn->set_charset("utf8mb4");
 
+// 2. CONSULTA PREPARADA - Aquí se quita la inyección SQL
+$sql = "SELECT Oid, ccEmpleado, Nombre, Tipo, Clave, CambioClave FROM empleado WHERE ccEmpleado = ? LIMIT 1";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $nombre);
+$stmt->execute();
+$resultado = $stmt->get_result();
+$usuario = $resultado->fetch_assoc();
 
-if ($usuario = mysqli_fetch_assoc($consulta)) {
+$stmt->close();
 
-    // Extraer el tipo del arreglo de resultados
-    $tipoUsuario = $usuario['Tipo'];
-    $CambioClave = $usuario['CambioClave'];
+// 3. Validar usuario y clave
+// Si tus claves están en texto plano por ahora, esto funciona.
+// Cuando las pases a hash, solo deja password_verify
+$claveValida = false;
+if ($usuario) {
+    if (password_verify($clave, $usuario['Clave'])) {
+        $claveValida = true; // Clave con hash
+    } elseif ($clave === $usuario['Clave']) {
+        $claveValida = true; // Clave en texto plano temporal
+    }
+}
 
+if ($usuario && $claveValida) {
 
-    if ($usuario['CambioClave'] == false) {//Si no se ha hecho cambio de clave lo redirige a cambiarla
-        //  var datoAEnviar = encodeURIComponent($User);
-        header("location: ../../pages/company/CambioClave.html?ccEmpleado=" . $nombre);
-      //  header("location: ../../pages/company/CambioClave.html");
+    // 4. ABRIR SESIÓN CORRECTAMENTE
+    session_regenerate_id(true);
+    $_SESSION['usuario_id'] = $usuario['Oid'];
+    $_SESSION['usuario'] = $usuario['ccEmpleado'];
+    $_SESSION['usuario_nombre'] = $usuario['Nombre'];
+    $_SESSION['rol'] = $usuario['Tipo'];
+    $_SESSION['login_time'] = time();
+
+    // 5. Tu misma lógica de cambio de clave
+    if ($usuario['CambioClave'] == 0 || $usuario['CambioClave'] == false) {
+        header("Location: ../../pages/company/CambioClave.html?ccEmpleado=" . urlencode($nombre));
+        exit();
     } else {
-        $_SESSION['usuario'] = $_POST['usuario'];
-        if ($usuario['Tipo'] == "Estandar") {//Si el usuario es estandar lo manda al menu basico
-            header("location: MenuBasico.php");
+        if ($usuario['Tipo'] == "Estandar") {
+            header("Location: MenuBasico.php"); // o MenuBasico.php como lo tenías
         } else {
-            header("location: ../../pages/company/MenuAdmin.html");
+            header("Location: ../../pages/company/MenuAdmin.html");
         }
+        exit();
     }
 
 } else {
-    //header("location: index.html");
-    // Código PHP
-    $mensaje = "Hola desde PHP";
-
-    // Imprimir bloque JS
-    echo "<script>
-        alert('$mensaje');
-      </script>";
-
-    header("location: error.php");
-
+    // Login fallido
+    // No uses alert + header juntos, el header nunca se ejecuta después de un echo
+    header("Location: ../../pages/company/login.php?error=datos");
+    exit();
 }
 ?>

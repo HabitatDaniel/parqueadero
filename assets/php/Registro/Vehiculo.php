@@ -76,7 +76,15 @@
                                 placeholder="Usuario" required autofocus>
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                            <label for="nombre" class="label">Tipo:</label>
+                            <label for="nombre" class="label">Area:</label>
+                            <select name="Tipo" id="Tipo">
+                                <option value="MOTOCICLETA">COMBUSTIBLE</option>
+                                <option value="MOTOCICLETA">CAMIONETA</option>
+                                <option value="MOTOCICLETA">AUTOMÓVIL</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Area:</label>
                             <select name="Tipo" id="Tipo">
                                 <option value="MOTOCICLETA">COMBUSTIBLE</option>
                                 <option value="MOTOCICLETA">CAMIONETA</option>
