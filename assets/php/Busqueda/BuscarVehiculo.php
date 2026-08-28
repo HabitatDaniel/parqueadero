@@ -113,7 +113,6 @@
                         // Reasignar la ruta por defecto
                         $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
                     }
-                    echo "<img src='" . htmlspecialchars($ruta_completa_fotoLateral) . "' alt='Foto del vehículo' class='imagenprincipal'>";
                     ?>
                 </div>
                 <div class="col-12 col-sm-2 col-md-12 col-lg-12 panelinferior ">
@@ -121,6 +120,7 @@
                         <!-- <h3>Información Técnica</h3> -->
                         <div class="row gx-2 text-center">
                             <?php
+                            echo "<div><img src='" . htmlspecialchars($ruta_completa_fotoLateral) . "' alt='Foto del vehículo' class='imagenprincipal'></div>";
                             echo "<strong>Datos Tecnicos</strong>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Placa:</strong></p></div></div>";
                             echo "<div class='col-6'><div class='panellabel'><p><strong>Tipo:</strong></p></div></div>";
@@ -145,6 +145,22 @@
                             //echo "<p><strong>Color:</strong> " . htmlspecialchars($vehiculo['Color']) . "</p>";
                     
                             // 4. MOSTRAR DATOS DEL CONDUCTOR REAL ENCONTRADO
+                            $carpeta_fotos = "../../../Soportes/Conductor/" . htmlspecialchars($id_conductor_vehiculo) . "/";
+                            //$nombre_foto =  "FotoFrente.JPG";
+                            $nombre_fotoLateral = "FotoFrente.png";
+
+                            // 1. Construir la ruta original
+                            $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+
+                            // 2. Verificar si el archivo NO existe en el servidor
+                            if (!file_exists($ruta_completa_fotoLateral)) {
+                                $carpeta_fotos = "../../../assets/img/";
+                                $nombre_fotoLateral = "portafolio-1.png";
+                                // Reasignar la ruta por defecto
+                                $ruta_completa_fotoLateral = $carpeta_fotos . $nombre_fotoLateral;
+                            }
+                            echo "<div><img src='" . htmlspecialchars($ruta_completa_fotoLateral) . "' alt='Foto del Conductor' class='imagenprincipal'></div>";
+
                             echo "<strong>Datos del Conductor</strong>";
                             // echo "<div class='col-6 col-sm-12 col-md-12 col-lg-6'><div class='panelder'>";
                             echo "<div class='col-12 col-sm-6 col-md-6 col-lg-6 caja-1'><div class='panellabel'><p><strong>Identificación:</strong></p></div></div>";

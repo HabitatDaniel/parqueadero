@@ -1,4 +1,4 @@
-<?php 
+<?php
 // 1. Cargamos la URL desde tu archivo .txt
 //$url_base = trim(file_get_contents("../../enlace.txt")); 
 ?>
@@ -11,7 +11,7 @@
     <title>Login</title>
     <link rel="icon" type="image/x-icon" href="../../../assets/img/IconoPrincipal.png">
     <link rel="stylesheet" href="../../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5Login.css">
+    <link rel="stylesheet" href="../../../assets/css/styles-bootstrap5LoginRegistro.css">
 </head>
 
 <body>
@@ -26,44 +26,82 @@
         <!-- DIV CENTRAL -->
         <section id="portafolio" class="row formulario">
             <div class="form-Inicio border">
-                <form action="../../assets/php/validar.php" method="post" class="formato" autocomplete="off">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-titulo">REGISTRO VEHICULO</div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                        <label for="nombre" class="label">Placa:</label>
-                        <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Usuario" required autofocus>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                        <label for="nombre" class="label">Medio:</label>
-                        <select name="Medio" id="Medio">
-                            <option value="MOTOCICLETA">MOTOCICLETA</option>
-                            <option value="MOTOCICLETA">AUTOMÓVIL</option>
-                            <option value="MOTOCICLETA">CAMIONETA</option>
-                        </select>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                        <label for="nombre" class="label">Placa:</label>
-                        <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Usuario" required autofocus>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
-                        <label for="nombre" class="label">Placa:</label>
-                        <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Usuario" required autofocus>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-input">
-                    <label for="email" class="label">Clave:</label>
-                    <input type="password" name="clave" class="form-control" id="miPassword1"
-                        placeholder="Clave" required>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
-                    <a class="text-blue  " href="">Olvido su clave?</a>
-                    <a class="text-white  " href="menu.html"><button type="submit"
-                            class="btn btn-success">Login</button></a>
-                   <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
+                <form action="../../assets/php/validar.php" method="post" class="formato" autocomplete="off">
+
+                    <!-- DIV IZQUIERDO -->
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-izq">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Placa:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Medio:</label>
+                            <select name="Medio" id="Medio">
+                                <option value="MOTOCICLETA">MOTOCICLETA</option>
+                                <option value="MOTOCICLETA">AUTOMÓVIL</option>
+                                <option value="MOTOCICLETA">CAMIONETA</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Tipo:</label>
+                            <select name="Tipo" id="Tipo">
+                                <option value="MOTOCICLETA">COMBUSTIBLE</option>
+                                <option value="MOTOCICLETA">CAMIONETA</option>
+                                <option value="MOTOCICLETA">AUTOMÓVIL</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Marca:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Color:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                    </div>
+                    <!-- DIV DERECHO -->
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 form-der">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Identificación:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Nombre:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Tipo:</label>
+                            <select name="Tipo" id="Tipo">
+                                <option value="MOTOCICLETA">COMBUSTIBLE</option>
+                                <option value="MOTOCICLETA">CAMIONETA</option>
+                                <option value="MOTOCICLETA">AUTOMÓVIL</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Marca:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-label">
+                            <label for="nombre" class="label">Color:</label>
+                            <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Usuario" required autofocus>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 form-footer">
+                        <a class="text-blue  " href="">Olvido su clave?</a>
+                        <a class="text-white  " href="menu.html"><button type="submit"
+                                class="btn btn-success">Login</button></a>
+                        <button type="button" onclick="mostrarOcultar(this)" class="btn btn-warning">
                             <span id="iconoEmoji">👁️</span> <span id="textoBoton">Mostrar</span>
                         </button>
-                </div>
+                    </div>
 
                 </form>
             </div>
@@ -79,32 +117,32 @@
         </footer>
     </div>
 
- 
+
     </div>
-<script>
-    function mostrarOcultar(boton) {
-        // Seleccionamos el único input por su ID
-        var pass1 = document.getElementById("miPassword1");
+    <script>
+        function mostrarOcultar(boton) {
+            // Seleccionamos el único input por su ID
+            var pass1 = document.getElementById("miPassword1");
 
-        var texto = document.getElementById("textoBoton");
-        var emoji = document.getElementById("iconoEmoji");
+            var texto = document.getElementById("textoBoton");
+            var emoji = document.getElementById("iconoEmoji");
 
-        // Evaluamos el estado de este único input
-        if (pass1.type === "password") {
-            pass1.type = "text";
+            // Evaluamos el estado de este único input
+            if (pass1.type === "password") {
+                pass1.type = "text";
 
-            texto.textContent = "Ocultar";
-            emoji.textContent = "🙈";
-            boton.classList.replace("btn-warning", "btn-danger");
-        } else {
-            pass1.type = "password";
+                texto.textContent = "Ocultar";
+                emoji.textContent = "🙈";
+                boton.classList.replace("btn-warning", "btn-danger");
+            } else {
+                pass1.type = "password";
 
-            texto.textContent = "Mostrar";
-            emoji.textContent = "👁️";
-            boton.classList.replace("btn-danger", "btn-warning");
+                texto.textContent = "Mostrar";
+                emoji.textContent = "👁️";
+                boton.classList.replace("btn-danger", "btn-warning");
+            }
         }
-    }
-</script>
+    </script>
 
     <script type="text/javascript">
         // Al cargar la página, forzamos un nuevo estado en el historial

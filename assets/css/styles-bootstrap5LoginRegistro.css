@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor */
+.contenedor {
+    padding-left: 20px;
+    display: flex;
+    /* padding-top: 60px; */
+    flex-flow: column nowrap;
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    /* Apila los elementos uno abajo del otro */
+    background-color: red;
+}
+
+
+/* Navegador */
+nav {
+    width: 100%;
+    /* position: fixed; */
+    top: 0;
+    text-align: right;
+    height: 60px;
+    /* left: 10%;
+    height: 60px;
+    /* Define una altura fija */
+    z-index: 1000;
+    /* Asegura que quede por encima de otros elementos*/
+    align-items: center;
+    display: flex;
+    background-color: #009480;
+}
+
+
+.logo {
+    /* background-color: red; */
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.menu {
+    height: 100%;
+    padding: 5px;
+}
+
+.login {
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+}
+
+.login .btn {
+    width: 90%;
+}
+
+body {
+    /* Añade un margen superior igual o mayor a la altura del nav para que no tape el contenido inicial */
+    /* padding-top: 60px; */
+}
+
+
+.formulario {
+    height: 550px;
+    width: 100%;
+    background-color: orange;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.form-Inicio {
+    height: 600px;
+    /* padding-top: 10px; */
+    width: 80%;
+    /* flex-flow: row wrap; */
+    flex-flow: column;
+    flex-direction: column;
+    display: flex;
+    background-color: #6ECEAD;
+}
+
+.formato {
+    width: 100%;
+    height: 300px;
+    background-color: PINK;
+    flex-direction: row;
+    flex-flow:row;
+    display: flex;
+}
+
+.form-izq{
+    background-color: red;
+}
+
+.form-der{
+    background-color:orange;
+    justify-content: right;
+    text-align: start;
+    align-items: start;
+    flex-flow: column;
+    flex-direction: column;
+    display: flex;
+}
+.form-Inicio .form-titulo {
+    border: 2px solid white;
+    /* Grosor, estilo y color del borde */
+    border-radius: 20px;
+    /* Nivel de redondeado de las esquinas */
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    font-size: 60px;
+    display: flex;
+}
+
+
+.form-Inicio .form-label {
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    flex-direction: row wrap;
+    display: flex;
+    background-color: red;
+}
+
+.form-Inicio .form-input {
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    flex-direction: row wrap;
+    display: flex;
+}
+
+
+label {
+    text-align: right;
+    margin: 10px;
+    width: 50%;
+}
+
+input {
+    text-align: center;
+    margin: 10px;
+    width: 90%;
+}
+
+.form-Inicio .form-footer {
+    /* background-color: pink; */
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+}
+
+.form-Inicio .form-footer .btn {
+    margin: 10px;
+}
+
+footer {
+    height: 60px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    color: white;
+    background-color: #00947F;
+}
+
+/*TABLET*/
+@media (max-width: 992px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+    /* Navegador */
+    nav {
+        width: 100%;
+    }
+
+    .formato {
+        width: 100%;
+        height: 500px;
+    }
+
+    .form-Inicio .form-titulo {
+        height: 30%;
+    }
+
+
+    .label {
+        text-align: center;
+    }
+
+}
+
+
+/*CELULARES*/
+@media (max-width: 767.98px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+    .form-Inicio {
+        height: 600px;
+        /* padding-top: 20px; */
+        width: 95%;
+
+        flex-flow: row wrap;
+        flex-direction: row;
+        display: flex;
+        background-color: #6ECEAD;
+    }
+
+    .formato {
+        /* background-color: red; */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-flow: column;
+
+    }
+
+    .form-Inicio .form-titulo {
+        font-size: 30px;
+        display: flex;
+    }
+
+    .form-Inicio .form-label {
+        height: 20%;
+        justify-content: center;
+        /* background-color: red; */
+        width: 95%;
+        align-items: center;
+        flex-flow: column;
+        text-align: center;
+        display: flex;
+    }
+
+    .form-Inicio .form-input {
+        height: 30%;
+        width: 95%;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        display: flex;
+    }
+}
+
+/*EXTRA SMALL*/
+@media (max-width:575.98px) {
+
+    .contenedor {
+        width: 100% !important;
+    }
+
+}
