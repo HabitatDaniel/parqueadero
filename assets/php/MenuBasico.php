@@ -204,6 +204,24 @@ if (file_exists($archivo_ip)) {
                             class="btn btn-secondary text-white">Registrar</button></a>
                 </div>
             </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4  port-col  ">
+                <div class="col row-4 dato"><strong>MOTOS ELÉCTRICAS</strong><br>
+                    <img src="../../assets/img/portafolio-3.png" class="img-fluid border" alt="Imagen Portafolio" />
+                    <!-- <div class="campo">Por esta razón, resulta necesario identificar los principales riesgos de
+                        seguridad de la información presentes en UNIMINUTO y proponer medidas orientadas al
+                        fortalecimiento de la protección de los datos. Asimismo, se busca promover una cultura de
+                        ciberseguridad mediante la sensibilización y capacitación de la comunidad universitaria sobre
+                        buenas prácticas en el manejo de la información.</div> -->
+                    <?php
+                    echo "<div class='row col-12 col-sm-12 col-md-12 col-lg-12 datodos'  >";
+                    echo "<div class='row col-6 col-sm-6 col-md-6 col-lg-6 datotres'>" . $cupoPatinetas . " Patinetas<br><h3>(<a style='color:red;'>" . $totalPatinetas . "</a>/<a style='color:green;'>" . $diferenciaPatineta . "</a>)</div>";
+                    echo "</div>";
+                    ?>
+                    <br>
+                    <a href="../../pages/modules/vehiculo/patineta.html"><button type="button"
+                            class="btn btn-secondary text-white">Registrar</button></a>
+                </div>
+            </div>
         </section>
 
         <footer class="row  col-12 col-sd-12 col-md-12 col-lg-12 border ">@Copyright - 2026<br>Todos los derechos
