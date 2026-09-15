@@ -186,7 +186,7 @@
         flex-direction: column;
         /* CRÍTICO: Los paneles se apilan uno abajo del otro en celular */
         width: 95%;
-        height: 950px;
+        height: 480px;
         /* background-color: RED; */
 
     }
@@ -275,7 +275,7 @@
     }
 
     .panelinferior {
-        height: 750px;
+        height: 450px;
         /* background-color: crimson; */
         /* display: flex; */
         /* flex-direction: row-reverse; Si están uno al lado del otro */
@@ -330,7 +330,7 @@
         height: 120px;
     }
     .panelinferior{
-        height: 900px;
+        height: 500px;
         /* background-color: orange; */
     }
     .tipoconductor{

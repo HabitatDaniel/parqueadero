@@ -225,7 +225,7 @@ if (file_exists($archivo_ip)) {
         </section>
 
         <footer class="row  col-12 col-sd-12 col-md-12 col-lg-12 border ">@Copyright - 2026<br>Todos los derechos
-            reservados a Daniel Rojas</be>
+            reservados</be>
         </footer>
     </div>
 
