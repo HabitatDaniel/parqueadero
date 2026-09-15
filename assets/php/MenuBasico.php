@@ -131,7 +131,7 @@ if (file_exists($archivo_ip)) {
             </div>
 
             <div class="col-12 col-sd-12 col-md-12 col-lg-2 ">
-                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menú<span>
             </div>
             <div class="col-12 col-sd-12 col-md-12 col-lg-8 ">
                 <H1 style="color:white;">REGISTRO PARQUEADERO</h1>
