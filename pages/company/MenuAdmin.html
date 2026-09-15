@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <!-- LIBRERÍA OBLIGATORIA PARA EXPORTAR A PDF (Corregida) -->
+    <script src="https://cloudflare.com"></script>
+
     <link rel="icon" type="image/x-icon" href="../../assets/img/IconoPrincipal.png">
     <link rel="stylesheet" href="../../assets/css/styles-bootstrap5Menu.css">
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
@@ -15,17 +19,19 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <table>
-            <th>
-            <td>hola</td>
-            <td>hola</td>
-            <td>hola</td>
-            </th>
+            <thead>
+                <tr>
+                    <td>hola</td>
+                    <td>hola</td>
+                    <td>hola</td>
+                </tr>
+            </thead>
         </table>
         <a href="../../pages/modules/informe/TablaConductores.php">Consultar Empleado</a>
         <a href="../../pages/modules/informe/TablaMovimientos.php">Registrar Empleado</a>
         <a href="../../pages/modules/informe/TablaMovimientos.php">Eliminar Empleado</a>
-
     </div>
+
     <div class="contenedor container-fluid-md ">
         <!-- MENU SUPERIOR -->
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 encabezado">
@@ -54,68 +60,105 @@
                 <a><b>Edad:</b> 30</a><br>
             </div>
         </div>
+        <div class=" col-12 col-sm-12 col-md-12 col-lg-12 MenuCentral border">
 
-        <div class=" col-12 col-sm-12 col-md-12 col-lg-12 modulos border">
-            <div class=" col-12 col-sm-12 col-md-12 col-lg-4  border">
-                <b> <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Empleados</span></b><br>
+            <div class=" col-3 col-sm-3 col-md-3 col-lg-3 modulos border">
+                <div class=" col-12 col-sm-12 col-md-12 col-lg-12  border">
+                    <b> <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰Empleados</span></b><br>
+                </div>
+
+                <div class=" col-12 col-sm-12 col-md-12 col-lg-12  border">
+                    <b><a>MODULO 1</a></b><br>
+                </div>
+                <ul>
+                    <li><a href="default.html">dato</a></li>
+                    <li><a href="default.html">d</a></li>
+                    <li><a href="default.html">aas</a></li>
+                    <li><a href="default.html">dd</a></li>
+                </ul>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12  border">
+                    <b><a>MODULO 2</a></b><br>
+                    <button onclick="cargarPagina('../../pages/modules/informe/TablaConductores.php')">Inicio</button>
+                    <button
+                        onclick="cargarPagina('../../pages/modules/informe/TablaMovimientos.php')">Servicios</button>
+                    <button onclick="cargarPagina('contacto.html')">Contacto</button>
+                    <!-- NUEVO: Botón para descargar el PDF -->
+                    <!-- Botón para mandar a imprimir / Guardar como PDF nativo -->
+                    <button onclick="imprimirContenedor()"
+                        style="background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                        🖨️ Imprimir / Guardar PDF
+                    </button>
+                </div>
             </div>
 
-            <div class=" col-12 col-sm-12 col-md-12 col-lg-4  border">
-                <b><a>MODULO 1</a></b><br>
-
+            <!-- Se agrega color de fondo explícito para evitar PDFs negros o transparentes -->
+            <div class="col-9 col-sm-9 col-md-9 col-lg-9 menuContenedor" id="contenedor-principal"
+                style="color: #000000; min-height: 200px; padding: 15px;">
+                <b>FRAME PRINCIPAL</b>
             </div>
-            <ul>
-                <li><a href="default.html">dato</a></li>
-                <li><a href="default.html">d</a></li>
-                <li><a href="default.html">aas</a></li>
-                <li><a href="default.html">dd</a></li>
-            </ul>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4  border">
-                <b><a>MODULO 1</a></b><br>
-            </div>
-        </div>
-
-
-
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 menuContenedor">
-            <B>FRAME PRINCIPAL</B>
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 footer">
-            @Copyright - 2026<br>Todos los derechos
-            reservados a Daniel Rojas</br>
+            @Copyright - 2026<br>Todos los derechos reservados a Daniel Rojas
         </div>
     </div>
 
+    <!-- TODOS LOS SCRIPTS UNIFICADOS SIN DUPLICADOS -->
     <script>
+        // Control del Menú Lateral Sidenav
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
 
+        /* Cambiado de void a 0 por sintaxis estricta */
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
 
-
         function cerrarSesion() {
             sessionStorage.clear(); // Limpia almacenamiento local
-            // 2. Redirigir y reemplazar en el historial
             window.location.replace("logout.php");
         }
 
-
-
-    </script>
-
-    <script>
-        // Inserta un estado falso en el historial del navegador inmediatamente
+        // Historial de navegación (Evitar botón atrás)
         window.history.pushState(null, null, window.location.href);
-
-        // Detecta si el usuario presiona el botón "Atrás"
         window.onpopstate = function () {
-            // Al detectar el retroceso, vuelve a empujar el estado actual al frente
             window.history.go(1);
         };
+
+        // Cargar páginas dinámicamente con fetch
+        function cargarPagina(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al cargar el archivo');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Reemplaza el contenido del div con el HTML descargado
+                    document.getElementById('contenedor-principal').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Hubo un problema:', error);
+                    document.getElementById('contenedor-principal').innerHTML = '<p style="color:red;">Error al cargar la página o archivo no encontrado.</p>';
+                });
+        }
+
+        function imprimirContenedor() {
+            const elemento = document.getElementById('contenedor-principal');
+
+            // Validación por si el contenedor está vacío
+            if (!elemento || elemento.innerText.trim() === "FRAME PRINCIPAL") {
+                alert("Por favor, carga primero una opción (Inicio, Servicios, etc.) antes de imprimir.");
+                return;
+            }
+
+            // Abre el asistente de impresión del navegador
+            // Desde allí el usuario puede elegir "Guardar como PDF" o seleccionar su impresora
+            window.print();
+        }
+
     </script>
 </body>
 
