@@ -62,22 +62,18 @@
         </div>
         <div class=" col-12 col-sm-12 col-md-12 col-lg-12 MenuCentral border">
 
-            <div class=" col-3 col-sm-3 col-md-3 col-lg-3 modulos border">
+            <div class=" col-3 col-sm-3 col-md-3 col-lg-2 modulos border">
                 <div class=" col-12 col-sm-12 col-md-12 col-lg-12  border">
                     <b> <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰Empleados</span></b><br>
                 </div>
 
                 <div class=" col-12 col-sm-12 col-md-12 col-lg-12  border">
-                    <b><a>MODULO 1</a></b><br>
+                    <b><a>REGISTRO</a></b><br>
                 </div>
-                <ul>
-                    <li><a href="default.html">dato</a></li>
-                    <li><a href="default.html">d</a></li>
-                    <li><a href="default.html">aas</a></li>
-                    <li><a href="default.html">dd</a></li>
-                </ul>
+                <button onclick="cargarPagina('../../assets/php/Registro/Vehiculo.php')">Vehiculo</button>
+                    
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12  border">
-                    <b><a>MODULO 2</a></b><br>
+                    <b><a>INFORMES</a></b><br>
                     <button onclick="cargarPagina('../../pages/modules/informe/TablaConductores.php')">Inicio</button>
                     <button
                         onclick="cargarPagina('../../pages/modules/informe/TablaMovimientos.php')">Servicios</button>
@@ -89,13 +85,22 @@
                         🖨️ Imprimir / Guardar PDF
                     </button>
                 </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12  border">
+                    <b><a>INFORMES</a></b><br>
+                </div>
+                    <button onclick="cargarPagina('../../pages/modules/informe/TablaConductores.php')">Conductores</button><br>
+                    <button onclick="cargarPagina('../../pages/modules/informe/TablaMovimientos.php')">Servicios</button><br>
+                    <button onclick="cargarPagina('contacto.html')">Contacto</button>
+                    <!-- NUEVO: Botón para descargar el PDF -->
+                   
             </div>
-
-            <!-- Se agrega color de fondo explícito para evitar PDFs negros o transparentes -->
-            <div class="col-9 col-sm-9 col-md-9 col-lg-9 menuContenedor" id="contenedor-principal"
-                style="color: #000000; min-height: 200px; padding: 15px;">
+            <!-- Se fija la altura a 500px y se habilitan los desplazamientos independientes -->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-10 menuContenedor" id="contenedor-principal"
+                style="background-color: #ffffff; color: #000000; height: 500px; padding: 15px; overflow-x: auto; overflow-y: auto; max-width: 100%;">
                 <b>FRAME PRINCIPAL</b>
             </div>
+
+
         </div>
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 footer">
@@ -127,23 +132,45 @@
         };
 
         // Cargar páginas dinámicamente con fetch
-        function cargarPagina(url) {
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al cargar el archivo');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    // Reemplaza el contenido del div con el HTML descargado
-                    document.getElementById('contenedor-principal').innerHTML = data;
-                })
-                .catch(error => {
-                    console.error('Hubo un problema:', error);
-                    document.getElementById('contenedor-principal').innerHTML = '<p style="color:red;">Error al cargar la página o archivo no encontrado.</p>';
-                });
-        }
+  function cargarPagina(url) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar el archivo');
+            }
+            return response.text();
+        })
+        .then(data => {
+            const contenedor = document.getElementById('contenedor-principal');
+            
+            // 1. Insertamos el HTML de la página
+            contenedor.innerHTML = data;
+
+            // 2. Buscamos y cargamos los estilos CSS dinámicamente
+            // Creamos un contenedor temporal en memoria para analizar el HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const enlacesCss = doc.querySelectorAll('link[rel="stylesheet"]');
+
+            // Inyectamos cada CSS en el <head> de la página principal si no existe ya
+            enlacesCss.forEach(cssOriginal => {
+                const href = cssOriginal.getAttribute('href');
+                
+                // Evitamos duplicar el CSS si ya se había cargado antes
+                if (!document.querySelector(`link[href="${href}"]`)) {
+                    const nuevoLink = document.createElement('link');
+                    nuevoLink.rel = 'stylesheet';
+                    nuevoLink.href = href;
+                    document.head.appendChild(nuevoLink);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Hubo un problema:', error);
+            document.getElementById('contenedor-principal').innerHTML = '<p style="color:red;">Error al cargar la página o archivo no encontrado.</p>';
+        });
+}
+
 
         function imprimirContenedor() {
             const elemento = document.getElementById('contenedor-principal');

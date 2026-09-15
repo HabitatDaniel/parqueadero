@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     /* Apila los elementos uno abajo del otro */
-    background-color: red;
+    background-color: beige;
 }
 
 
@@ -91,20 +91,21 @@ body {
     flex-flow: column;
     flex-direction: column;
     display: flex;
+    /* background-color: red; */
     background-color: #6ECEAD;
 }
 
 .formato {
     width: 100%;
     height: 300px;
-    background-color: PINK;
+    background-color: purple;
     flex-direction: row;
     flex-flow:row;
     display: flex;
 }
 
 .form-izq{
-    background-color: red;
+    background-color: cyan;
 }
 
 .form-der{
@@ -137,7 +138,7 @@ body {
     flex-flow: row;
     flex-direction: row wrap;
     display: flex;
-    background-color: red;
+    /* background-color: red; */
 }
 
 .form-Inicio .form-input {
@@ -162,7 +163,7 @@ input {
 }
 
 .form-Inicio .form-footer {
-    /* background-color: pink; */
+    background-color: pink;
     align-items: center;
     justify-content: center;
     flex-direction: row;
