@@ -70,8 +70,8 @@ $limite = match (mb_strtolower($vehiculo['Medio'], 'UTF-8')) {
 };
 
 // 4. Fotos
-//$fotoVehiculo = obtenerFoto("C:/datos-seguro-sdht/soportes/vehiculo/", $placa_mayuscula, "FotoLateral.png");
-$fotoVehiculo = obtenerFoto("../../../datos-seguro-sdht/soportes/vehiculo/","DFO36I","FotoLateral.png");
+$fotoVehiculo = obtenerFoto("../../../datos-seguro-sdht/soportes/vehiculo/", $placa_mayuscula, "/FotoLateral.png");
+//$fotoVehiculo = obtenerFoto("../../../datos-seguro-sdht/soportes/vehiculo/","DFO36I","FotoLateral.png");
 //$fotoConductor = obtenerFoto(".C:/datos-seguro-sdht/soportes/conductor/", $id_conductor_vehiculo, "FotoFrente.png");
 
 $stmt->close();
