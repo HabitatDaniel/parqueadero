@@ -23,7 +23,7 @@
         <!-- <section id="portafolio" class="row formulario"> -->
             <div class="form-Inicio border">
                 <div class="row col-12 col-sm-12 col-md-12 col-lg-12 form-titulo">REGISTRO VEHICULO</div>
-                <form action="../../php/registro/RegistroVehiculo.php" method="get" class="formato" autocomplete="off">
+                <form action="../../php/registro/RegistroVehiculo.php" method="get" class="formato" autocomplete="off"  id="form-vehiculo">
 
                     <!-- DIV IZQUIERDO -->
                     <div class="col-12 col-sm-12 col-md-12 col-lg-6" form-izq >
